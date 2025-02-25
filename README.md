@@ -12,5 +12,5 @@
 NewsBridge is a news aggregator that collects articles from both liberal and conservative sources. Using NLP, it identifies similar stories and an LLM combines them into a single unbiased article, removing biases and presenting a balanced perspective.
 
 
-##Setup Instructions (TODO Later)
+## Setup Instructions (TODO Later)
 Placeholder for setup instructions...
