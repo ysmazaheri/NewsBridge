@@ -1,0 +1,1 @@
+//This is a sample page to add pages folder
