@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: theme('colors.gray.500');
+    --color-secondary: theme('colors.neutral.300');
+    --color-tertiary: theme('colors.slate.100');
+}
+
+@layer components {
+    .bg-primary {
+        background-color: var(--color-primary);
+    }
+    .bg-secondary {
+        background-color: var(--color-secondary);
+    }
+    .bg-tertiary {
+        background-color: var(--color-tertiary);
+    }
+    .text-primary {
+        color: var(--color-primary);
+    }
+    .text-secondary {
+        color: var(--color-secondary);
+    }
+    .text-tertiary {
+        color: var(--color-tertiary);
+    }
+    .text-black {
+        color: theme('colors.black');
+    }
+}
