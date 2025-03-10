@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Button, TextField } from "./components/FormElements";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [text, setText] = useState("");
@@ -14,6 +15,8 @@ function App() {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="flex flex-col p-4 justify-between gap-5">
       {/* Testing for Cancel Button */}
       <Button
@@ -92,6 +95,7 @@ function App() {
         bgColor="bg-white"
         cornerRadius="rounded-md"
       />
+    </div>
     </div>
   );
 }
