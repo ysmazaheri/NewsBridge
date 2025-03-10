@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         /* NewsBridge Logo + Text */
-        <nav className="flex items-center justify-between p-2 bg-tertiary text-primary shadow-md">
+        <nav className="flex items-center justify-between p-2 bg-tertiary text-primary shadow-md px-5">
             <div className="flex flex-col items-center">
                 <img src="/NewsBridgeLogo.png" alt="NewsBridge Logo" className="w-34 h-14" />
                 <span className="text-xl font-bold">NewsBridge</span>
@@ -45,7 +45,7 @@ const Navbar = () => {
         width={175}
         bgColor="bg-tertiary"
         borderColor="border-transparent"
-        img="/searchicon.png"  
+        img="/searchicon.svg"  
         height="h-16"
         handleClick={() => console.log('Search clicked')}
     />

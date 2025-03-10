@@ -23,7 +23,7 @@ const ProfileDropdown = () => {
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center cursor-pointer space-x-3 hover:bg-gray-200 hover:shadow-lg transition duration-100 ease-in-out p-2 rounded-lg"
+                className="flex items-center cursor-pointer space-x-3 hover:brightness-90 hover:shadow-lg transition duration-100 ease-in-out p-2 rounded-lg"
             >
                 {/* Insert user image in the future */}
                 <img
