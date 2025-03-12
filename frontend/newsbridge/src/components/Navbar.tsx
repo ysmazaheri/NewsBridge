@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from './FormElements';
+import { NavbarButton } from './NavbarButton';
 import ProfileDropdown from './ProfileDropdown';
 import SearchComponent from './SearchComponent';
 //Navbar component
@@ -22,17 +23,16 @@ const Navbar = () => {
     return (
         <div>
         {/* NewsBridge Logo + Text */}
-        <nav className="flex items-center justify-between p-2 bg-tertiary text-primary shadow-md px-5">
-            <div className="flex flex-col items-center">
-                <img src="/NewsBridgeLogo.png" alt="NewsBridge Logo" className="w-34 h-14" />
+        <nav className="flex items-center justify-between p-2 bg-tertiary text-primary shadow-md w-screen">
+            <div className="flex flex-col items-center hidden lg:block">
+                <img src="/NewsBridgeLogo.png" alt="NewsBridge Logo" className="w-40 h-14" />
                 <span className="text-xl font-bold">NewsBridge</span>
             </div>
     {/* Buttons for Trending, Search, Bookmarked and Profile Dropdown */}
-    <div className="flex space-x-4 flex-grow justify-center">
-    <Button
+    <div className="flex justify-center items-center space-x-10 w-full">
+    <NavbarButton
         value="Trending"
         textColor="text-primary"
-        width={175}
         bgColor="bg-tertiary"
         borderColor="border-transparent"
         img="/trending.svg"
@@ -41,20 +41,18 @@ const Navbar = () => {
             console.log("Trending clicked")
         }}
       />
-    <Button 
+    <NavbarButton 
         value="Search"
         textColor="text-primary"
-        width={175}
         bgColor="bg-tertiary"
         borderColor="border-transparent"
         img="/searchicon.svg"
         height="h-16"
         handleClick={() => setShowSearch(!showSearch)}
     />
-    <Button 
+    <NavbarButton 
     value="Bookmarked"
     textColor="text-primary"
-    width={175}
     bgColor="bg-tertiary"
     borderColor="border-transparent"
     img="/bookmarkicon.png" 
@@ -66,7 +64,7 @@ const Navbar = () => {
         
     {/* Current Date */}
         </div>
-            <div className="flex items-center px-5">
+            <div className="items-center px-5 hidden lg:block whitespace-nowrap">
                 <span className="text-md text-primary">{curDate}</span>
             </div>
         </nav>
