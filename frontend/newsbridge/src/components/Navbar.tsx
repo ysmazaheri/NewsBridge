@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button } from './FormElements';
 import ProfileDropdown from './ProfileDropdown';
+import SearchComponent from './SearchComponent';
 //Navbar component
 const Navbar = () => {
 
     //State to store current date
     const [curDate, setCurDate] = useState<string>("");
-
+    const [showSearch, setShowSearch] = useState<boolean>(false);
     //On component mount, get current date and set it to state
     useEffect(() => {
         const date = new Date();
@@ -19,7 +20,8 @@ const Navbar = () => {
     }, []);
 
     return (
-        /* NewsBridge Logo + Text */
+        <div>
+        {/* NewsBridge Logo + Text */}
         <nav className="flex items-center justify-between p-2 bg-tertiary text-primary shadow-md px-5">
             <div className="flex flex-col items-center">
                 <img src="/NewsBridgeLogo.png" alt="NewsBridge Logo" className="w-34 h-14" />
@@ -45,9 +47,9 @@ const Navbar = () => {
         width={175}
         bgColor="bg-tertiary"
         borderColor="border-transparent"
-        img="/searchicon.svg"  
+        img="/searchicon.svg"
         height="h-16"
-        handleClick={() => console.log('Search clicked')}
+        handleClick={() => setShowSearch(!showSearch)}
     />
     <Button 
     value="Bookmarked"
@@ -68,7 +70,11 @@ const Navbar = () => {
                 <span className="text-md text-primary">{curDate}</span>
             </div>
         </nav>
-    )
-}
+            <div>
+                {showSearch && <SearchComponent />}
+            </div>
+        </div>
+    );
+};
 
 export default Navbar
