@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import LogOut from './LogOut';
 
 const ProfileDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isLogOutOpen, setIsLogOutOpen] = useState(false);
     // Ref for dropdown
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +54,7 @@ const ProfileDropdown = () => {
                     <button
                         className="w-full text-left py-2 px-4 text-red-600 hover:bg-red-100"
                         onClick={() => {
-                            console.log("Logout clicked");
+                            setIsLogOutOpen(true);
                             setIsDropdownOpen(false);
                         }}
                     >
@@ -60,6 +62,7 @@ const ProfileDropdown = () => {
                     </button>
                 </div>
             )}
+            {isLogOutOpen && <LogOut onClose={() => setIsLogOutOpen(false)} />}
         </div>
     );
 };
