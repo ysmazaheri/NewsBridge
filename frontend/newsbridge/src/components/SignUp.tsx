@@ -8,6 +8,12 @@ const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState({
+    length: false,
+    hasUpperCase: false,
+    hasLowerCase: false,
+    hasSpecialChar: false,
+  });
   const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +23,14 @@ const SignUpPage: React.FC = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
     setFormData({ ...formData, password });
+    setPasswordValidation({
+      length: password.length >= 8,
+      hasUpperCase: /[A-Z]/.test(password),
+      hasLowerCase: /[a-z]/.test(password),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    })
     setIsPasswordValid(validatePassword(password));
-    setDoPasswordsMatch(password === formData.confirmPassword);
+    setDoPasswordsMatch(password!== "" && password === formData.confirmPassword);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +88,7 @@ const SignUpPage: React.FC = () => {
             { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid },
             { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch },
           ]}
+          passwordValidation={passwordValidation}
           buttonText="Sign Up"
           footerText="Already have an account?"
           footerLinkText="Sign In"

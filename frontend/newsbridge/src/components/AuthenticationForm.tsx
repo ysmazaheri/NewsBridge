@@ -13,6 +13,12 @@ interface AuthenticationFormProps {
   footerLinkText: string;
   onFooterLinkClick: () => void;
   onSubmit: (e: React.FormEvent) => void;
+  passwordValidation?: {
+    length: boolean;
+    hasUpperCase: boolean;
+    hasLowerCase: boolean;
+    hasSpecialChar: boolean;
+  };
   buttonWidth?: number;
   secondFooterText?: string;
   secondFooterLinkText?: string;
@@ -28,6 +34,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   footerLinkText,
   onFooterLinkClick,
   onSubmit,
+  passwordValidation,
   buttonWidth,
   secondFooterText,
   secondFooterLinkText,
@@ -56,6 +63,34 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
           )}
         </div>
       ))}
+    {passwordValidation && (
+      <div className="mt-2 text-sm text-gray-600 py-4">
+        <div className="flex items-center">
+          <span style={{ color: passwordValidation.length ? 'green' : 'red' }}>
+            {passwordValidation.length ? <FaCheckCircle /> : <FaTimesCircle />}
+          </span>
+          <span className="ml-2">At least 8 characters</span>
+        </div>
+        <div className="flex items-center mt-1">
+          <span style={{ color: passwordValidation.hasUpperCase ? 'green' : 'red' }}>
+            {passwordValidation.hasUpperCase ? <FaCheckCircle /> : <FaTimesCircle />}
+          </span>
+          <span className="ml-2">At least one uppercase letter</span>
+        </div>
+        <div className="flex items-center mt-1">
+          <span style={{ color: passwordValidation.hasLowerCase ? 'green' : 'red' }}>
+            {passwordValidation.hasLowerCase ? <FaCheckCircle /> : <FaTimesCircle />}
+          </span>
+          <span className="ml-2">At least one lowercase letter</span>
+        </div>
+        <div className="flex items-center mt-1">
+          <span style={{ color: passwordValidation.hasSpecialChar ? 'green' : 'red' }}>
+            {passwordValidation.hasSpecialChar ? <FaCheckCircle /> : <FaTimesCircle />}
+          </span>
+          <span className="ml-2">At least one special character</span>
+        </div>
+      </div>
+    )}
       <Button
         value={buttonText}
         handleClick={() => onSubmit}
