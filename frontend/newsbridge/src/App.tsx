@@ -3,14 +3,14 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import FormElementsPage from "./pages/component_testing_pages/FormElementsPage";
 
-const navbarRoutes = ["/", "/FormElementsPage"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
     <Router>
       <ConditionalNavbar />
       <Routes>
-        <Route path="/FormElementsPage" element={<FormElementsPage />} />
+        <Route path="/form-elements-page" element={<FormElementsPage />} />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
