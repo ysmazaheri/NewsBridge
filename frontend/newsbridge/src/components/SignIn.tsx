@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import AuthenticationForm from "./AuthenticationForm";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignInPage: React.FC = () => {
 
@@ -16,15 +18,15 @@ const SignInPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email && !formData.password) {
-      alert("Please fill out all fields.");
+      toast.error("Please fill out all fields.");
       return;
     }
     if (!formData.email) {
-      alert("Email is required.");
+      toast.error("Email is required.");
       return;
     }
     if (!formData.password) {
-      alert("Password is required.");
+      toast.error("Password is required.");
       return;
     }
     // Handle form submission
@@ -37,21 +39,24 @@ const SignInPage: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <AuthenticationForm
-        header="Welcome Back 👋"
-        description="Welcome to **NewsBridge**, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
-        fields={[
-          { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
-          { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
-        ]}
-        buttonText="Sign In"
-        footerText="Don't have an account?"
-        footerLinkText="Sign Up"
-        onFooterLinkClick={handleFooterLinkClick}
-        onSubmit={handleSubmit}
-      />
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <AuthenticationForm
+          header="Welcome Back 👋"
+          description="Welcome to **NewsBridge**, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
+          fields={[
+            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
+            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
+          ]}
+          buttonText="Sign In"
+          footerText="Don't have an account?"
+          footerLinkText="Sign Up"
+          onFooterLinkClick={handleFooterLinkClick}
+          onSubmit={handleSubmit}
+        />
+      </form>
+      <ToastContainer />
+    </>
   );
 };
 
