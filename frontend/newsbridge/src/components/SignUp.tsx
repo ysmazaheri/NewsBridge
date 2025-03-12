@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import AuthenticationForm from "./AuthenticationForm";
 
 const SignUpPage: React.FC = () => {
@@ -29,11 +31,11 @@ const SignUpPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
     if (!validatePassword(formData.password)) {
-      alert("Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters");
+      toast.error("Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters");
       return;
     }
     // Handle form submission
