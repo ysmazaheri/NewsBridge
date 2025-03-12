@@ -156,8 +156,8 @@ const SearchComponent = () => {
             )}
 
             {/* Horizontal Dropdown Container */}
-            <div className="flex flex-row space-x-2">
-              {/* Posted at Dropdown */}
+            <div className="flex flex-col justify-center items-center md:flex-row md:w-full space-y-2 md:space-y-0 sm:space-x-2">
+            {/* Posted at Dropdown */}
               <Dropdown
               label="Posted At"
               options={postedAtOptions}
