@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from "react-route
 import "./App.css";
 import Navbar from "./components/Navbar";
 import FormElementsPage from "./pages/component_testing_pages/FormElementsPage";
-import SignInPage from "./pages/component_testing_pages/SignInPage";
+import SignIn from "./components/SignIn";
 
 const navbarRoutes = ["/", "/form-elements-page"]; // Add paths here that should have the Navbar
 
@@ -12,7 +12,7 @@ function App() {
       <ConditionalNavbar />
       <Routes>
         <Route path="/form-elements-page" element={<FormElementsPage />} />
-        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-in" element={<SignIn />} />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
