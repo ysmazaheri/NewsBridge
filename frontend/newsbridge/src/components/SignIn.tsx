@@ -24,6 +24,10 @@ const SignInPage: React.FC = () => {
     navigate("/sign-up");
   };
 
+  const handleResetPasswordLinkClick = () => {
+    navigate("/reset-password");
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <AuthenticationForm
@@ -38,6 +42,9 @@ const SignInPage: React.FC = () => {
         footerLinkText="Sign Up"
         onFooterLinkClick={handleFooterLinkClick}
         onSubmit={handleSubmit}
+        secondFooterText="Forgot your password?"
+        secondFooterLinkText="Reset Password"
+        onSecondFooterLinkClick={handleResetPasswordLinkClick}
       />
     </form>
   );
