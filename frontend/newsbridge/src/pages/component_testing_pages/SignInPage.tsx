@@ -21,6 +21,7 @@ const SignInPage: React.FC = () => {
 
   const handleFooterLinkClick = () => {
     // Handle footer link click
+    console.log("Routed to Sign Up page");
   };
 
   return (
@@ -29,8 +30,8 @@ const SignInPage: React.FC = () => {
         header="Welcome Back 👋"
         description="Welcome to NewsBridge, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
         fields={[
-          { label: "Email", type: "email", value: "", onChange: handleEmailChange },
-          { label: "Password", type: "password", value: "", onChange: handlePasswordChange },
+          { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
+          { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
         ]}
         buttonText="Sign In"
         footerText="Don't have an account?"
