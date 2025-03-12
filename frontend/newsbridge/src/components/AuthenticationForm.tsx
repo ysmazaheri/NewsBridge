@@ -1,5 +1,7 @@
 import React from "react";
 import { TextField, Button } from "./FormElements";
+import ReactMarkdown from 'react-markdown';
+import { Components } from 'react-markdown';
 
 interface AuthenticationFormProps {
   header: string;
@@ -24,10 +26,14 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   onSubmit,
   buttonWidth,
 }) => {
+  const components: Components = {
+    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-6 text-lg text-justify p-2" {...props} />,
+  };
+
   return (
     <div className="flex flex-col items-center p-6 mt-10 bg-white h-auto mx-auto overflow-hidden w-150 justify-self-center">
       <h1 className="text-6xl font-bold mb-4">{header}</h1>
-      <p className="text-gray-600 mb-6 text-lg text-justify p-2">{description}</p>
+      <ReactMarkdown components={components}>{description}</ReactMarkdown>
       {fields.map((field, index) => (
         <div key={index} className="mb-4 w-full flex justify-center items-center">
           <TextField
