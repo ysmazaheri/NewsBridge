@@ -28,7 +28,7 @@ const SignInPage: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <AuthenticationForm
         header="Welcome Back 👋"
-        description="Welcome to NewsBridge, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
+        description="Welcome to **NewsBridge**, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
         fields={[
           { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
           { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
