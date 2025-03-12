@@ -40,7 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             </button>
 
             {isOpen && (
-                <div className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg">
+                <div className="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg top-full">
                     {options.map((option) => (
                         <div
                             key={option.value}
