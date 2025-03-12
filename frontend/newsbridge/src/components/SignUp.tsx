@@ -16,10 +16,22 @@ const SignUpPage: React.FC = () => {
     setFormData({ ...formData, confirmPassword: e.target.value });
   };
 
+  const validatePassword = (password: string) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    return password.length >= minLength && hasUpperCase && hasLowerCase && hasSpecialChar;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
+      return;
+    }
+    if (!validatePassword(formData.password)) {
+      alert("Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters");
       return;
     }
     // Handle form submission
