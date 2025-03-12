@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button } from './FormElements';
 import { NavbarButton } from './NavbarButton';
 import ProfileDropdown from './ProfileDropdown';
-import SearchComponent from './SearchComponent';
+import SearchComponent from '../Search/SearchComponent';
 //Navbar component
 const Navbar = () => {
 

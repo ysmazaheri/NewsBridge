@@ -1,5 +1,4 @@
 import React from "react";
-import { fixedWidth } from "../utils/constants";
 
 interface NavbarButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value: string;

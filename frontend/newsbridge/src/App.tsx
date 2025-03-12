@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavigationBar/Navbar";
 import FormElementsPage from "./pages/component_testing_pages/FormElementsPage";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
-import ResetPassword from "./components/ResetPassword";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import ResetPassword from "./pages/ResetPassword";
 
 const navbarRoutes = ["/", "/form-elements-page"]; // Add paths here that should have the Navbar
 
