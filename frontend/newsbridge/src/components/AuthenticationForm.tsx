@@ -13,6 +13,9 @@ interface AuthenticationFormProps {
   onFooterLinkClick: () => void;
   onSubmit: (e: React.FormEvent) => void;
   buttonWidth?: number;
+  secondFooterText?: string;
+  secondFooterLinkText?: string;
+  onSecondFooterLinkClick?: () => void;
 }
 
 const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
@@ -25,6 +28,9 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   onFooterLinkClick,
   onSubmit,
   buttonWidth,
+  secondFooterText,
+  secondFooterLinkText,
+  onSecondFooterLinkClick,
 }) => {
   const components: Components = {
     p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-6 text-lg text-justify p-2" {...props} />,
@@ -61,6 +67,17 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
           {footerLinkText}
         </span>
       </p>
+      {secondFooterText && secondFooterLinkText && onSecondFooterLinkClick && (
+        <p className="text-primary mt-1">
+          {secondFooterText}{" "}
+          <span
+            className="text-blue-500 hover:text-blue-600 cursor-pointer"
+            onClick={onSecondFooterLinkClick}
+          >
+            {secondFooterLinkText}
+          </span>
+        </p>
+      )}
     </div>
   );
 };
