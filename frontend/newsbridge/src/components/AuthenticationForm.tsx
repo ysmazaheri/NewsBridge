@@ -2,11 +2,12 @@ import React from "react";
 import { TextField, Button } from "./FormElements";
 import ReactMarkdown from 'react-markdown';
 import { Components } from 'react-markdown';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 interface AuthenticationFormProps {
   header: string;
   description: string;
-  fields: { label: string; type: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }[];
+  fields: { label: string; type: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; isValid?: boolean }[];
   buttonText: string;
   footerText: string;
   footerLinkText: string;
@@ -41,13 +42,18 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
       <h1 className="text-6xl font-bold mb-4">{header}</h1>
       <ReactMarkdown components={components}>{description}</ReactMarkdown>
       {fields.map((field, index) => (
-        <div key={index} className="mb-4 w-full flex justify-center items-center">
+        <div key={index} className="mb-4 w-full flex justify-center items-center relative">
           <TextField
             defaultValue={field.label}
             value={field.value}
             onChange={field.onChange}
             type={field.type}
           />
+          {field.isValid !== undefined && (
+            <span className={`absolute right-3 ${field.isValid ? 'text-green-500' : 'text-red-500'}`}>
+              {field.isValid ? <FaCheckCircle /> : <FaTimesCircle />}
+            </span>
+          )}
         </div>
       ))}
       <Button

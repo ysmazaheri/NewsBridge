@@ -6,6 +6,8 @@ import AuthenticationForm from "./AuthenticationForm";
 
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
   const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,11 +15,16 @@ const SignUpPage: React.FC = () => {
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, password: e.target.value });
+    const password = e.target.value;
+    setFormData({ ...formData, password });
+    setIsPasswordValid(validatePassword(password));
+    setDoPasswordsMatch(password === formData.confirmPassword);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, confirmPassword: e.target.value });
+    const confirmPassword = e.target.value;
+    setFormData({ ...formData, confirmPassword });
+    setDoPasswordsMatch(isPasswordValid && confirmPassword === formData.password);
   };
 
   const validatePassword = (password: string) => {
@@ -66,8 +73,8 @@ const SignUpPage: React.FC = () => {
           description="Sign up now to enjoy a community of informed readers and enjoy balanced, transparent news from every side."
           fields={[
             { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
-            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange },
+            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid },
+            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch },
           ]}
           buttonText="Sign Up"
           footerText="Already have an account?"
