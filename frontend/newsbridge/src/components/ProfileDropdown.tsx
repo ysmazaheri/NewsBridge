@@ -19,7 +19,7 @@ const ProfileDropdown = () => {
     }, []);
 
     return (
-        <div className="relative mt-1 px-5 max-[380px]:translate-x-7" ref={dropdownRef}>
+        <div className="relative mt-1" ref={dropdownRef}>
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
@@ -32,7 +32,7 @@ const ProfileDropdown = () => {
                     className="w-10 h-10 rounded-full"
                 />
                 {/* Insert user's name in the future */}
-                <span className="text-md text-primary hidden md:block">Insert Name</span>
+                <span className="text-md text-primary hidden md:block whitespace-nowrap">Insert Name</span>
                 <span>{isDropdownOpen ? '▲' : '▼'}</span>
             </button>
             {/* Dropdown */}
