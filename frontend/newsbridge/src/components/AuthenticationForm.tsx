@@ -25,7 +25,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   buttonWidth,
 }) => {
   return (
-    <div className="flex flex-col items-center p-6 mt-10 bg-white rounded-lg shadow-md h-auto mx-auto overflow-hidden w-150 justify-self-center">
+    <div className="flex flex-col items-center p-6 mt-10 bg-white h-auto mx-auto overflow-hidden w-150 justify-self-center">
       <h1 className="text-6xl font-bold mb-4">{header}</h1>
       <p className="text-gray-600 mb-6 text-lg text-justify p-2">{description}</p>
       {fields.map((field, index) => (
