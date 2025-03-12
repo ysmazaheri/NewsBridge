@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthenticationForm from "./AuthenticationForm";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignInPage: React.FC = () => {
-
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, email: e.target.value });
@@ -34,8 +35,7 @@ const SignInPage: React.FC = () => {
   };
 
   const handleFooterLinkClick = () => {
-    // Handle footer link click
-    console.log("Routed to Sign Up page");
+    navigate("/sign-up");
   };
 
   return (
