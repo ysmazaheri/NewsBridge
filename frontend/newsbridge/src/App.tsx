@@ -5,8 +5,9 @@ import FormElementsPage from "./pages/component_testing_pages/FormElementsPage";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import ResetPassword from "./components/ResetPassword";
+import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 
-const navbarRoutes = ["/", "/form-elements-page"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/bias-scale-page" element={<BiasScalePage />} />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
