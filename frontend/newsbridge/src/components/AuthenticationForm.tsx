@@ -1,6 +1,5 @@
 import React from "react";
 import { TextField, Button } from "./FormElements";
-import { fixedWidth } from "../utils/constants"; // Import fixedWidth
 
 interface AuthenticationFormProps {
   header: string;
@@ -10,7 +9,7 @@ interface AuthenticationFormProps {
   footerText: string;
   footerLinkText: string;
   onFooterLinkClick: () => void;
-  onSubmit: () => void;
+  onSubmit: (e: React.FormEvent) => void;
   buttonWidth?: number;
 }
 
@@ -23,14 +22,14 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   footerLinkText,
   onFooterLinkClick,
   onSubmit,
-  buttonWidth = fixedWidth,
+  buttonWidth,
 }) => {
   return (
-    <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md w-full max-w-md">
-      <h1 className="text-2xl font-bold mb-4">{header}</h1>
-      <p className="text-gray-600 mb-6 text-center">{description}</p>
+    <div className="flex flex-col items-center p-6 mt-10 bg-white rounded-lg shadow-md h-auto mx-auto overflow-hidden w-150 justify-self-center">
+      <h1 className="text-6xl font-bold mb-4">{header}</h1>
+      <p className="text-gray-600 mb-6 text-lg text-justify p-2">{description}</p>
       {fields.map((field, index) => (
-        <div key={index} className="mb-4 w-full">
+        <div key={index} className="mb-4 w-full flex justify-center items-center">
           <TextField
             defaultValue={field.label}
             value={field.value}
@@ -41,15 +40,16 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
       ))}
       <Button
         value={buttonText}
-        handleClick={onSubmit}
+        handleClick={() => onSubmit}
         width={buttonWidth}
         bgColor="bg-primary"
         textColor="text-white"
+        type="submit"
       />
-      <p className="text-gray-600 mt-4">
+      <p className="text-primary mt-4">
         {footerText}{" "}
         <span
-          className="text-primary cursor-pointer"
+          className="text-blue-500 hover:text-blue-600 cursor-pointer"
           onClick={onFooterLinkClick}
         >
           {footerLinkText}
