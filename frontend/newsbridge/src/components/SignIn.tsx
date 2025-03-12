@@ -15,6 +15,18 @@ const SignInPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.email && !formData.password) {
+      alert("Please fill out all fields.");
+      return;
+    }
+    if (!formData.email) {
+      alert("Email is required.");
+      return;
+    }
+    if (!formData.password) {
+      alert("Password is required.");
+      return;
+    }
     // Handle form submission
     console.log("Submitted data:", formData);
   };
