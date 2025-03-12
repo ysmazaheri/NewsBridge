@@ -56,7 +56,7 @@ const ProfileDropdown = () => {
                             setIsDropdownOpen(false);
                         }}
                     >
-                        Logout
+                        Log Out
                     </button>
                 </div>
             )}
