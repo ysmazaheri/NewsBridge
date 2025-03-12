@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Button } from "./FormElements";
 
 function getColor(rating: number): string {
   const red = Math.min(255, (rating / 100) * 255);
@@ -42,6 +43,7 @@ interface UserBiasScaleProps {
 export const UserBiasScale = (props: UserBiasScaleProps) => {
   const { initialRating, onChange } = props;
   const [dragging, setDragging] = useState<boolean>(false);
+  const [isMutable, setIsMutable] = useState<boolean>(true);
   const [currentRating, setCurrentRating] = useState<number>(initialRating);
   const scaleRef = useRef<HTMLDivElement>(null);
 
@@ -69,7 +71,6 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
     const handleMouseUp = () => {
       if (dragging) {
         setDragging(false);
-        onChange(currentRating);
       }
     };
 
@@ -85,23 +86,45 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [dragging, currentRating, onChange]);
+  }, [dragging]);
+
+  // Updates the state of the toggle button
+  const handleClick = () => {
+    if (isMutable) {
+      onChange(currentRating);
+    }
+    setIsMutable(!isMutable);
+  };
 
   return (
-    <div
-      ref={scaleRef} // Reference to this specific bias scale component
-      className="relative w-full h-2 bg-gradient-to-r from-blue-500 to-red-500 rounded-full"
-    >
+    <div>
       <div
-        className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md cursor-pointer hover:scale-105"
-        style={{
-          left: `${currentRating}%`,
-          border: "2px solid",
-          borderColor: color,
-        }}
-        onMouseDown={() => setDragging(true)}
-        // Only considered "dragging" if circle was clicked
-      />
+        ref={scaleRef} // Reference to this specific bias scale component
+        className="relative w-full h-2 bg-gradient-to-r from-blue-500 to-red-500 rounded-full"
+      >
+        <div
+          className={`absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md
+            ${
+              isMutable
+                ? "hover:scale-105 cursor-pointer"
+                : "opacity-70 cursor-not-allowed"
+            }`}
+          style={{
+            left: `${currentRating}%`,
+            border: "2px solid",
+            borderColor: color,
+          }}
+          onMouseDown={() => isMutable && setDragging(true)}
+          // Only considered "dragging" if circle was clicked
+        />
+      </div>
+      <div className="flex justify-center mt-6">
+        <Button
+          value={isMutable ? "Submit Rating" : "Adjust Rating"}
+          width={200}
+          handleClick={handleClick}
+        ></Button>
+      </div>
     </div>
   );
 };
