@@ -37,8 +37,8 @@ export const NavbarButton = (props: NavbarButtonProps) => {
       <button
         onClick={handleClick}
         className={`flex items-center justify-center gap-4 ${heightClass} w-full border ${textColorClass} ${cornerRadiusClass} 
-                      ${bgColorClass} ${borderColorClass} text-md ${boldnessClass} transition-transform duration-300 ease-in-out 
-                      active:scale-75 hover:brightness-90 text-primary px-1`}
+               ${bgColorClass} ${borderColorClass} text-md ${boldnessClass} transition-transform duration-300 ease-in-out 
+               active:scale-75 hover:brightness-90 text-primary py-3 px-8`}
       >
         {img && <img src={img} alt="button icon" className="w-10 h-10" />}
         <span className="hidden md:block">{value}</span> 

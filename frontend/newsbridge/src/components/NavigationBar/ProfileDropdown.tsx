@@ -4,7 +4,6 @@ const ProfileDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     // Ref for dropdown
     const dropdownRef = useRef<HTMLDivElement>(null);
-
     const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
     // Close dropdown when clicking outside of it
@@ -23,7 +22,7 @@ const ProfileDropdown = () => {
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center cursor-pointer space-x-3 hover:brightness-90 hover:shadow-lg transition duration-100 ease-in-out p-2 rounded-lg"
+                className="flex items-center justify-center gap-4 cursor-pointer bg-tertiary text-primary border border-transparent rounded-2xl transition-transform duration-300 ease-in-out active:scale-75 filter hover:brightness-90 py-3 px-8"
             >
                 {/* Insert user image in the future */}
                 <img

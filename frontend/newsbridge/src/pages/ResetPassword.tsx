@@ -33,7 +33,7 @@ const ResetPasswordPage: React.FC = () => {
           header="Reset Password"
           description="Please provide your email address to reset your password."
           fields={[
-            { label: "Email", type: "email", value: email, onChange: handleEmailChange },
+            { label: "Email", type: "email", value: email, onChange: handleEmailChange, showIcon: false },
           ]}
           buttonText="Reset Password"
           footerText="Remember your password?"

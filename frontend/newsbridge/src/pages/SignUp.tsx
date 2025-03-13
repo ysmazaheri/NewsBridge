@@ -72,9 +72,9 @@ const SignUpPage: React.FC = () => {
           header="Sign Up"
           description="Sign up now to enjoy a community of informed readers and enjoy balanced, transparent news from every side."
           fields={[
-            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid },
-            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch },
+            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange, showIcon: false },
+            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid, showIcon: true },
+            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch, showIcon: true },
           ]}
           buttonText="Sign Up"
           footerText="Already have an account?"
