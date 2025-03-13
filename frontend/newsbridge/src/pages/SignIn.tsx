@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthenticationForm from "./AuthenticationForm";
+import AuthenticationForm from "../components/Authentication/AuthenticationForm";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -49,17 +49,17 @@ const SignInPage: React.FC = () => {
           header="Welcome Back 👋"
           description="Welcome to **NewsBridge**, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
           fields={[
-            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange },
+            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange, showIcon: false },
+            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, showIcon: true },
           ]}
           buttonText="Sign In"
           footerText="Don't have an account?"
           footerLinkText="Sign Up"
           onFooterLinkClick={handleFooterLinkClick}
           onSubmit={handleSubmit}
-        secondFooterText="Forgot your password?"
-        secondFooterLinkText="Reset Password"
-        onSecondFooterLinkClick={handleResetPasswordLinkClick}
+          secondFooterText="Forgot your password?"
+          secondFooterLinkText="Reset Password"
+          onSecondFooterLinkClick={handleResetPasswordLinkClick}
         />
       </form>
       <ToastContainer />
