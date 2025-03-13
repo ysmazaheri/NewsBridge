@@ -22,14 +22,16 @@ const ProfileDropdown = () => {
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center justify-center gap-4 cursor-pointer bg-tertiary text-primary border border-transparent rounded-2xl transition-transform duration-300 ease-in-out active:scale-75 filter hover:brightness-90 py-3 px-8"
+                className="flex items-center justify-center gap-4 cursor-pointer bg-tertiary text-primary border border-transparent rounded-2xl transition-transform duration-300 ease-in-out active:scale-75 filter hover:brightness-90 md:py-3 md:px-8"
             >
                 {/* Insert user image in the future */}
-                <img
-                    src="/ProfileIcon.png"
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full"
-                />
+                <div className="w-10 h-10 flex-shrink-0">
+                    <img 
+                    src={"/ProfileIcon.png"} 
+                    alt="Profile" 
+                    className="w-full h-full object-contain" 
+                    />
+                </div>
                 {/* Insert user's name in the future */}
                 <span className="text-md text-primary hidden md:block whitespace-nowrap">Insert Name</span>
                 <span>{isDropdownOpen ? '▲' : '▼'}</span>
