@@ -44,6 +44,13 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-6 text-lg text-justify p-2" {...props} />,
   };
 
+  const validationRules = [
+  { key: 'length', label: 'At least 8 characters' },
+  { key: 'hasUpperCase', label: 'At least one uppercase letter' },
+  { key: 'hasLowerCase', label: 'At least one lowercase letter' },
+  { key: 'hasSpecialChar', label: 'At least one special character' },
+  ]
+
   return (
     <div className="flex flex-col items-center p-6 mt-10 bg-white h-auto mx-auto overflow-hidden w-150 justify-self-center">
       <h1 className="text-6xl font-bold mb-4">{header}</h1>
@@ -63,34 +70,19 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
           )}
         </div>
       ))}
-    {passwordValidation && (
-      <div className="mt-2 text-sm text-gray-600 py-4">
-        <div className="flex items-center">
-          <span style={{ color: passwordValidation.length ? 'green' : 'red' }}>
-            {passwordValidation.length ? <FaCheckCircle /> : <FaTimesCircle />}
-          </span>
-          <span className="ml-2">At least 8 characters</span>
+      {passwordValidation && (
+        <div className="mt-2 text-sm text-gray-600 py-4">
+          {validationRules.map(({ key, label }) => (
+            <div key={key} className="flex items-center mt-1">
+              <span style={{ color: passwordValidation[key as keyof typeof passwordValidation] ? 'green' : 'red' }}>
+                {passwordValidation[key as keyof typeof passwordValidation] ? <FaCheckCircle /> : <FaTimesCircle />}
+              </span>
+              <span className="ml-2">{label}</span>
+            </div>
+          ))}
         </div>
-        <div className="flex items-center mt-1">
-          <span style={{ color: passwordValidation.hasUpperCase ? 'green' : 'red' }}>
-            {passwordValidation.hasUpperCase ? <FaCheckCircle /> : <FaTimesCircle />}
-          </span>
-          <span className="ml-2">At least one uppercase letter</span>
-        </div>
-        <div className="flex items-center mt-1">
-          <span style={{ color: passwordValidation.hasLowerCase ? 'green' : 'red' }}>
-            {passwordValidation.hasLowerCase ? <FaCheckCircle /> : <FaTimesCircle />}
-          </span>
-          <span className="ml-2">At least one lowercase letter</span>
-        </div>
-        <div className="flex items-center mt-1">
-          <span style={{ color: passwordValidation.hasSpecialChar ? 'green' : 'red' }}>
-            {passwordValidation.hasSpecialChar ? <FaCheckCircle /> : <FaTimesCircle />}
-          </span>
-          <span className="ml-2">At least one special character</span>
-        </div>
-      </div>
-    )}
+      )}
+
       <Button
         value={buttonText}
         handleClick={() => onSubmit}

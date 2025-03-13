@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import AuthenticationForm from "./AuthenticationForm";
-
+import { validatePassword, getPasswordValidation, checkPasswordMatch } from "../utils/validation";
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
   const [isPasswordValid, setIsPasswordValid] = useState(false);
@@ -23,28 +23,16 @@ const SignUpPage: React.FC = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
     setFormData({ ...formData, password });
-    setPasswordValidation({
-      length: password.length >= 8,
-      hasUpperCase: /[A-Z]/.test(password),
-      hasLowerCase: /[a-z]/.test(password),
-      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
-    })
+    const validation = getPasswordValidation(password);
+    setPasswordValidation(validation);
     setIsPasswordValid(validatePassword(password));
-    setDoPasswordsMatch(password!== "" && password === formData.confirmPassword);
+    setDoPasswordsMatch(checkPasswordMatch(password, formData.confirmPassword));
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const confirmPassword = e.target.value;
     setFormData({ ...formData, confirmPassword });
-    setDoPasswordsMatch(isPasswordValid && confirmPassword === formData.password);
-  };
-
-  const validatePassword = (password: string) => {
-    const minLength = 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    return password.length >= minLength && hasUpperCase && hasLowerCase && hasSpecialChar;
+    setDoPasswordsMatch(checkPasswordMatch(formData.password, confirmPassword));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
