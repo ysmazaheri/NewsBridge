@@ -24,7 +24,7 @@ const Navbar = () => {
     <div>
       <nav className="flex items-center justify-center p-2 bg-tertiary text-primary shadow-md w-screen">
         {/* Left Section */}
-        <div className="basis-1/3 flex justify-start items-center hidden lg:flex">
+        <div className="basis-1/3 flex justify-start items-center hidden xl:flex">
           <div className="flex flex-col items-center">
             <img
               src="/NewsBridgeLogo.png"
@@ -68,7 +68,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Section */}
-        <div className="basis-1/3 flex justify-end items-center px-5 hidden lg:flex whitespace-nowrap">
+        <div className="basis-1/3 flex justify-end items-center px-5 hidden xl:flex whitespace-nowrap">
           <span className="text-md text-primary">{curDate}</span>
         </div>
       </nav>
