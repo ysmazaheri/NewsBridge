@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="flex items-center p-2 bg-tertiary text-primary shadow-md w-screen">
+      <nav className="flex items-center justify-center p-2 bg-tertiary text-primary shadow-md w-screen">
         {/* Left Section */}
         <div className="basis-1/3 flex justify-start items-center hidden lg:flex">
           <div className="flex flex-col items-center">
@@ -36,7 +36,7 @@ const Navbar = () => {
         </div>
 
         {/* Center Section */}
-        <div className="basis-1/3 flex justify-center items-center space-x-6">
+        <div className="basis-1/3 flex justify-center items-center w-full space-x-8 md:space-x-6">
           <NavbarButton
             value="Trending"
             textColor="text-primary"
