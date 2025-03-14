@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, TextField } from "../../components/FormElements";
-
+import Bookmark from "../../components/Bookmark";
 function FormElementsPage() {
   const [text, setText] = useState("");
 
@@ -91,6 +91,10 @@ function FormElementsPage() {
         bgColor="bg-white"
         cornerRadius="rounded-md"
       />
+      <Bookmark size="text-lg" />
+      <Bookmark size="text-2xl" />
+      <Bookmark></Bookmark>
+      <Bookmark size="text-5xl" />
     </div>
   );
 }
