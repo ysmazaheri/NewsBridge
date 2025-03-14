@@ -31,7 +31,7 @@ const CommentDisplay = ({ username, userComment, userImage }: CommentDisplayProp
         {isLongComment && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="mt-1 text-sm text-blue-600 underline"
+            className="mt-1 text-sm text-blue-600 underline cursor-pointer"
           >
             {expanded ? 'Show Less' : 'Read More'}
           </button>
