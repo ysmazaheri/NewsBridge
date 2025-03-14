@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, TextField } from "../../components/FormElements";
+import CommentDisplay from "../../components/CommentDisplay";
 
 function FormElementsPage() {
   const [text, setText] = useState("");
@@ -97,6 +98,15 @@ function FormElementsPage() {
         cornerRadius="rounded-md"
         showSubmitIcon={true}
         onIconSubmit={handleButtonClickComment}
+      />
+      {/* Testing for Comment Display */}
+      <CommentDisplay
+        username="Bao Nguyen"
+        userComment="This is a sample comment This is a sample comment 
+        This is a sample commentThis is a sample comment This is a sample comment 
+        This is a sample comment This is a sample comment This is a sample comment This is a 
+        sample comment This is a sample comment "
+        userImage="/person.svg"
       />
     </div>
   );
