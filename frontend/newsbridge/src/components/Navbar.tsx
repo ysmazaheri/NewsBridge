@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Button } from './FormElements';
 import { NavbarButton } from './NavbarButton';
 import ProfileDropdown from './ProfileDropdown';
 import SearchComponent from './SearchComponent';
