@@ -12,6 +12,11 @@ function FormElementsPage() {
     console.log("Button clicked");
   };
 
+  const handleButtonClickComment = (value: string) => {
+    console.log("Comment submitted:", value);
+  };
+
+
   return (
     <div className="flex flex-col p-4 justify-between gap-5">
       {/* Testing for Cancel Button */}
@@ -90,6 +95,8 @@ function FormElementsPage() {
         onChange={handleInputChange}
         bgColor="bg-white"
         cornerRadius="rounded-md"
+        showSubmitIcon={true}
+        onIconSubmit={handleButtonClickComment}
       />
     </div>
   );
