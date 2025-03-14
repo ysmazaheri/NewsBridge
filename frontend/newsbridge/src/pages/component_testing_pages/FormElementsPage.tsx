@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, TextField } from "../../components/FormElements";
 import Bookmark from "../../components/Bookmark";
 import CommentDisplay from "../../components/CommentDisplay";
+import Bookmark from "../../components/Bookmark";
 
 function FormElementsPage() {
   const [text, setText] = useState("");
