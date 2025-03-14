@@ -20,7 +20,7 @@ const LogOut: React.FC<LogOutProps> = ({ onClose }) => {
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative bg-white p-6 rounded-lg shadow-lg text-center">
                 <FaQuestionCircle className="w-12 h-12 mx-auto mb-4" />
-                <h2 className="text-xl mb-4">Are you leaving?</h2>
+                <h2 className="text-xl mb-4 font-bold">Are you leaving?</h2>
                 <div className="flex justify-center space-x-4">
                     <Button
                         value="Cancel"
@@ -28,6 +28,7 @@ const LogOut: React.FC<LogOutProps> = ({ onClose }) => {
                         bgColor="bg-gray-300"
                         borderColor="border-gray-300"
                         textColor="text-black"
+                        boldness="font-bold"
                         handleClick={onClose}
                     />
                     <Button
@@ -36,6 +37,7 @@ const LogOut: React.FC<LogOutProps> = ({ onClose }) => {
                         bgColor="bg-red-600"
                         borderColor="border-red-600"
                         textColor="text-white"
+                        boldness="font-bold"
                         handleClick={handleSignOut}
                     />
                 </div>
