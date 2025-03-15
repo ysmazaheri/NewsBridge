@@ -39,7 +39,7 @@ export const NavbarButton = (props: NavbarButtonProps) => {
         onClick={handleClick}
         className={`flex items-center justify-center gap-4 ${heightClass} w-full border ${textColorClass} ${cornerRadiusClass} 
                ${bgColorClass} ${borderColorClass} text-md ${boldnessClass} transition-transform duration-300 ease-in-out 
-               active:scale-75 hover:brightness-90 text-primary px-1 md:py-3 md:px-8`}
+               active:scale-75 hover:brightness-90 text-primary px-1 md:py-2 md:px-6`}
       >
         {img && (
           <div className="w-10 h-10 flex-shrink-0">
@@ -50,7 +50,7 @@ export const NavbarButton = (props: NavbarButtonProps) => {
             />
           </div>
         )}
-        <span className="hidden md:block">{value}</span> 
+        <span className="max-[890px]:hidden">{value}</span> 
       </button>
     </div>
   );

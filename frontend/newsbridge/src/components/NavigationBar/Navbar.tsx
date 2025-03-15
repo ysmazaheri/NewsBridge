@@ -36,7 +36,7 @@ const Navbar = () => {
         </div>
 
         {/* Center Section */}
-        <div className="basis-1/3 flex justify-center items-center w-full space-x-8 md:space-x-6">
+        <div className="basis-1/3 flex justify-center items-center w-full space-x-8 md:space-x-0">
           <NavbarButton
             value="Trending"
             textColor="text-primary"
@@ -60,7 +60,7 @@ const Navbar = () => {
             textColor="text-primary"
             bgColor="bg-tertiary"
             borderColor="border-transparent"
-            img="/bookmarkicon.png"
+            img="/bookmarkicon.svg"
             height="h-16"
             handleClick={() => console.log("Bookmarks clicked")}
           />
