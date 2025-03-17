@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthenticationForm from "./AuthenticationForm";
+import AuthenticationForm from "../components/Authentication/AuthenticationForm";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -33,7 +33,7 @@ const ResetPasswordPage: React.FC = () => {
           header="Reset Password"
           description="Please provide your email address to reset your password."
           fields={[
-            { label: "Email", type: "email", value: email, onChange: handleEmailChange },
+            { label: "Email", type: "email", value: email, onChange: handleEmailChange, showIcon: false },
           ]}
           buttonText="Reset Password"
           footerText="Remember your password?"

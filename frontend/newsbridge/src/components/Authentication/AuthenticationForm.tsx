@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Button } from "./FormElements";
+import { TextField, Button } from "../FormElements";
 import ReactMarkdown from 'react-markdown';
 import { Components } from 'react-markdown';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 interface AuthenticationFormProps {
   header: string;
   description: string;
-  fields: { label: string; type: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; isValid?: boolean }[];
+  fields: { label: string; type: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; isValid?: boolean, showIcon: boolean }[];
   buttonText: string;
   footerText: string;
   footerLinkText: string;
@@ -41,7 +41,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   onSecondFooterLinkClick,
 }) => {
   const components: Components = {
-    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-6 text-lg text-justify p-2" {...props} />,
+    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-8 text-lg text-justify p-2" {...props} />,
   };
 
   const validationRules = [
@@ -52,8 +52,8 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   ]
 
   return (
-    <div className="flex flex-col items-center p-6 mt-10 bg-white h-auto mx-auto overflow-hidden w-150 justify-self-center">
-      <h1 className="text-6xl font-bold mb-4">{header}</h1>
+    <div className="flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-150">
+      <h1 className="text-6xl font-bold mb-6">{header}</h1>
       <ReactMarkdown components={components}>{description}</ReactMarkdown>
       {fields.map((field, index) => (
         <div key={index} className="mb-4 w-full flex justify-center items-center relative">
@@ -62,9 +62,10 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
             value={field.value}
             onChange={field.onChange}
             type={field.type}
+            showPasswordIcon={field.showIcon}
           />
           {field.isValid !== undefined && (
-            <span className={`absolute right-3 ${field.isValid ? 'text-green-500' : 'text-red-500'}`}>
+            <span className={`absolute right-16 ${field.isValid ? 'text-green-500' : 'text-red-500'}`}>
               {field.isValid ? <FaCheckCircle /> : <FaTimesCircle />}
             </span>
           )}
@@ -91,7 +92,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
         textColor="text-white"
         type="submit"
       />
-      <p className="text-primary mt-4">
+      <p className="text-primary mt-6">
         {footerText}{" "}
         <span
           className="text-blue-500 hover:text-blue-600 cursor-pointer"
@@ -101,7 +102,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
         </span>
       </p>
       {secondFooterText && secondFooterLinkText && onSecondFooterLinkClick && (
-        <p className="text-primary mt-1">
+        <p className="text-primary mt-4">
           {secondFooterText}{" "}
           <span
             className="text-blue-500 hover:text-blue-600 cursor-pointer"

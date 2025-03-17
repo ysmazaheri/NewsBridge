@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Button } from './FormElements';
+import { Button } from '../FormElements';
 import { SortAsc, Newspaper, Clock, Gauge } from "lucide-react";
 import Dropdown from './Dropdown';
 
@@ -16,7 +16,7 @@ const SearchComponent = () => {
     const [selectedPostedAtOption, setSelectedPostedAtOption] = useState<string>("");
     const [selectedBiasRatingOption, setSelectedBiasRatingOption] = useState<string>("");
 
-    //State to store dropdown visibility
+    //State to store dropdown visibility 
     const [isCategoryDropdownOpen, setIsCategoryDropdown] = useState<boolean>(false);
     const [isSortDropdownOpen, setIsSortDropdown] = useState<boolean>(false);
     const [isPostedAtDropdownOpen, setIsPostedAtDropdown] = useState<boolean>(false);
