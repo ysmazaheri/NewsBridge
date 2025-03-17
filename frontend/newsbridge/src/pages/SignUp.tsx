@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import AuthenticationForm from "./AuthenticationForm";
+import AuthenticationForm from "../components/Authentication/AuthenticationForm";
 import { validatePassword, getPasswordValidation, checkPasswordMatch } from "../utils/validation";
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
@@ -72,9 +72,9 @@ const SignUpPage: React.FC = () => {
           header="Sign Up"
           description="Sign up now to enjoy a community of informed readers and enjoy balanced, transparent news from every side."
           fields={[
-            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid },
-            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch },
+            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange, showIcon: false },
+            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid, showIcon: true },
+            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch, showIcon: true },
           ]}
           passwordValidation={passwordValidation}
           buttonText="Sign Up"

@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import LogOut from './LogOut';
+import LogOut from '../LogOut';
 
 const ProfileDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isLogOutOpen, setIsLogOutOpen] = useState(false);
     // Ref for dropdown
     const dropdownRef = useRef<HTMLDivElement>(null);
-
     const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
     // Close dropdown when clicking outside of it
@@ -21,20 +20,22 @@ const ProfileDropdown = () => {
     }, []);
 
     return (
-        <div className="relative mt-1" ref={dropdownRef}>
+        <div className="relative" ref={dropdownRef}>
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center cursor-pointer space-x-3 hover:brightness-90 hover:shadow-lg transition duration-100 ease-in-out p-2 rounded-lg"
+                className="flex items-center justify-center gap-3 cursor-pointer bg-tertiary text-primary border border-transparent rounded-2xl transition-transform duration-300 ease-in-out active:scale-75 filter hover:brightness-90 md:py-3 md:px-6"
             >
                 {/* Insert user image in the future */}
-                <img
-                    src="/ProfileIcon.png"
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full"
-                />
+                <div className="w-10 h-10 flex-shrink-0">
+                    <img 
+                    src={"/profileicon.svg"} 
+                    alt="Profile" 
+                    className="w-full h-full object-contain" 
+                    />
+                </div>
                 {/* Insert user's name in the future */}
-                <span className="text-md text-primary hidden md:block whitespace-nowrap">Insert Name</span>
+                <span className="text-md text-primary max-[890px]:hidden whitespace-nowrap">Insert Name</span>
                 <span>{isDropdownOpen ? '▲' : '▼'}</span>
             </button>
             {/* Dropdown */}
