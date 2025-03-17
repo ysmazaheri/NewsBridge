@@ -10,7 +10,9 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: number;
   type?: string;
   showPasswordIcon?: boolean;
+  showSubmitIcon?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onIconSubmit?: (value: string) => void;
 }
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -36,7 +38,9 @@ export const TextField = (props: TextFieldProps) => {
     width = fixedWidth,
     type,
     showPasswordIcon,
+    showSubmitIcon,
     onChange,
+    onIconSubmit
   } = props;
 
   const defaultValueClass = defaultValue ? defaultValue : "";
@@ -58,6 +62,10 @@ export const TextField = (props: TextFieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };
+
+  const handleSubmit = () => {
+    if (onIconSubmit) onIconSubmit(value || "");
+  }
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
   };
@@ -77,6 +85,14 @@ export const TextField = (props: TextFieldProps) => {
           src={isPasswordVisible ? "/showpassword.svg" : "/hidepassword.svg"}
           alt={isPasswordVisible ? "Show password" : "Hide password"}
           onClick={togglePasswordVisibility}
+          className="absolute right-6 top-4 cursor-pointer w-[20px] h-[28px]"
+        />
+      )}
+      {showSubmitIcon && (
+        <img
+          src="submiticon.svg"
+          alt="Submit Icon"
+          onClick={handleSubmit}
           className="absolute right-6 top-4 cursor-pointer w-[20px] h-[28px]"
         />
       )}
