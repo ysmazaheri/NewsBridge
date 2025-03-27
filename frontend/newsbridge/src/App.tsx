@@ -13,8 +13,9 @@ import ResetPassword from "./pages/ResetPassword";
 import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import ArticlePage from "./pages/Article";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/article"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/bias-scale-page" element={<BiasScalePage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/article" element={<ArticlePage />} />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
