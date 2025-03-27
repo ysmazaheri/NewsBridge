@@ -7,6 +7,8 @@ const Navbar = () => {
   //State to store current date
   const [curDate, setCurDate] = useState<string>("");
   const [showSearch, setShowSearch] = useState<boolean>(false);
+  const [logoSrc, setLogoSrc] = useState<string>("/logo-light-bg.png");
+
   //On component mount, get current date and set it to state
   useEffect(() => {
     const date = new Date();
@@ -20,18 +22,36 @@ const Navbar = () => {
     );
   }, []);
 
+  useEffect(() => {
+    const navElement = document.querySelector("nav");
+    if (navElement) {
+      const bgColor = window.getComputedStyle(navElement).backgroundColor;
+      const isDarkBackground = checkIfDark(bgColor);
+      setLogoSrc(isDarkBackground ? "/logo-dark-bg.png" : "/logo-light-bg.png");
+    }
+  }, []);
+
+  const checkIfDark = (color: string): boolean => {
+    const rgb = color.match(/\d+/g)?.map(Number);
+    if (!rgb || rgb.length < 3) return false;
+    const [r, g, b] = rgb;
+    // Calculate luminance
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luminance < 128; // Threshold for dark background
+  };
+
   return (
     <div>
       <nav className="flex items-center justify-center p-2 bg-tertiary text-primary shadow-md w-screen">
         {/* Left Section */}
         <div className="basis-1/3 flex justify-start items-center hidden xl:flex">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-row items-center space-x-2 pl-2">
             <img
-              src="/NewsBridgeLogo.png"
+              src={logoSrc}
               alt="NewsBridge Logo"
-              className="w-40 h-14"
+              className="max-w-full max-h-full object-contain w-17 h-17"
             />
-            <span className="text-xl font-bold">NewsBridge</span>
+            <span className="text-3xl font-bold">NewsBridge</span>
           </div>
         </div>
 
