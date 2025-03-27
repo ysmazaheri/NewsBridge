@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { TextField, Button } from "../components/FormElements";
+import { ToastContainer, toast } from "react-toastify";
 
+// Mimics data we would retrieve from some API call
 const mockData = {
   // Replace / utilize DTOs once Said's PR goes through
   user_id: 100, // Primary key, auto-incremented
@@ -21,6 +23,11 @@ const ProfilePage: React.FC = () => {
     dob: "",
   });
 
+  const [userDetails, setUserDetails] = useState({
+    firstName: mockData.first_name,
+    lastName: mockData.last_name,
+  });
+
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     formName: string
@@ -32,9 +39,25 @@ const ProfilePage: React.FC = () => {
   };
 
   const handleButtonClick = () => {
-    console.log(formData);
+    if (!formData.firstName && !formData.lastName) {
+      toast.error("Please fill out first and last name.");
+      return;
+    }
+    if (!formData.firstName) {
+      toast.error("First name is required.");
+      return;
+    }
+    if (!formData.lastName) {
+      toast.error("Last name is required.");
+      return;
+    }
+    // Handle button click. Once backend is implemented, this will send the changes to backend through some API  call
+    console.log("Submitted data:", formData);
+    setUserDetails({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+    });
   };
-  // Once backend is implemented, this will send the changes to backend
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -42,14 +65,14 @@ const ProfilePage: React.FC = () => {
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-700">
-            Welcome, {mockData.first_name}
+            Welcome, {userDetails.firstName}
           </h2>
           <div className="flex items-center space-x-4 mt-4">
             {/* Placeholder for Profile Picture, mockData.profile_pic */}
             <div className="w-16 h-16 bg-gray-300 rounded-full"></div>
             <div>
               <p className="text-lg font-semibold text-gray-700 hidden sm:block">
-                {mockData.first_name + " " + mockData.last_name}
+                {userDetails.firstName + " " + userDetails.lastName}
               </p>
               <p className="text-gray-500 hidden sm:block">{mockData.email}</p>
             </div>
@@ -102,10 +125,12 @@ const ProfilePage: React.FC = () => {
               defaultValue={"Your DOB"}
               onChange={(e) => handleInputChange(e, "dob")}
               width={"100%"}
+              type={"date"}
             />
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
