@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "../components/FormElements";
 import { ToastContainer, toast } from "react-toastify";
+import DeleteAccount from "../components/DeleteAccount";
 
 // Mimics data we would retrieve from some API call
 const mockData = {
@@ -27,6 +28,8 @@ const ProfilePage: React.FC = () => {
     firstName: mockData.first_name,
     lastName: mockData.last_name,
   });
+
+  const [isDeleteOpen, setDeleteOpen] = useState(false);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -60,7 +63,7 @@ const ProfilePage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 z-50">
       {/* User Profile Section */}
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div>
@@ -129,8 +132,23 @@ const ProfilePage: React.FC = () => {
             />
           </div>
         </div>
+        <div className="col-span-2 mt-5 flex justify-left">
+          <Button
+            value="Delete Account"
+            width={160}
+            cornerRadius="rounded-full"
+            boldness="font-bold"
+            height="h-12"
+            bgColor="bg-red-400"
+            borderColor="border-red-500"
+            handleClick={() => setDeleteOpen(true)}
+          />
+        </div>
       </div>
       <ToastContainer />
+      <div className="text-primary">
+        {isDeleteOpen && <DeleteAccount onClose={() => setDeleteOpen(false)} />}
+      </div>
     </div>
   );
 };
