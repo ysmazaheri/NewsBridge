@@ -1,10 +1,8 @@
 import { UnbiasedArticle } from "../dtos/UnbiasedArticleDTO";
-import { ArticleViewModel } from "./ArticleVM";
 
 export interface UnbiasedArticleViewModel {
   id: number;
   title: string;
-  sources: ArticleViewModel[] | null; //TODO: Remove acceptance of null as an option here
   summary: string;
   content: string;
   imageUrl?: string | null;
@@ -17,7 +15,6 @@ export interface UnbiasedArticleViewModel {
 export const mapUnbiasedArticleToViewModel = (article: UnbiasedArticle): UnbiasedArticleViewModel => ({
   id: article.unbiased_article_id,
   title: article.title,
-  sources: null, //TODO: Get the sources using a database call
   summary: article.summary,
   content: article.content,
   imageUrl: article.image ? `/images/${article.image}` : null,
