@@ -6,6 +6,11 @@ const meta = {
   component: MockDrop,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: "Purpose: A reusable dropdown component that supports different styles (icons) and is used for selecting search criteria for articles."
+      }
+    }
   },
   tags: ['autodocs'],
   argTypes: {

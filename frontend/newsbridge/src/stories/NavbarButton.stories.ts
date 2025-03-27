@@ -10,6 +10,11 @@ const meta = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
+    docs: {
+      description: {
+        component: "Purpose: A reusable button component that is used in the Navbar to allow users to navigate between pages."
+      }
+    }
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
