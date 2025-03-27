@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import LogOut from '../LogOut';
+import { Link } from "react-router-dom";
 
 const ProfileDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -42,15 +43,17 @@ const ProfileDropdown = () => {
             {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 shadow-lg rounded-md overflow-hidden bg-white border border-gray-200">
                     {/* Profile Button */}
-                    <button
-                        className="w-full text-left py-2 px-4 text-primary hover:bg-gray-100"
-                        onClick={() => {
-                            console.log("Profile clicked");
-                            setIsDropdownOpen(false);
-                        }}
-                    >
-                        Profile
-                    </button>
+                    <Link to="/profile">
+                        <button
+                            className="w-full text-left py-2 px-4 text-primary hover:bg-gray-100"
+                            onClick={() => {
+                                console.log("Profile clicked");
+                                setIsDropdownOpen(false);
+                            }}
+                        >
+                            Profile
+                        </button>
+                    </Link>
                     {/* Logout Button */}
                     <button
                         className="w-full text-left py-2 px-4 text-red-600 hover:bg-red-100"
