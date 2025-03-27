@@ -21,7 +21,7 @@ const ProfileDropdown = () => {
     }, []);
 
     return (
-        <div className="relative z-50" ref={dropdownRef}>
+        <div className="relative z-1" ref={dropdownRef}>
             {/* Dropdown button */}
             <button
                 onClick={toggleDropdown}
