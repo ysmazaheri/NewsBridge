@@ -7,7 +7,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   bgColor?: string;
   borderColor?: string;
   cornerRadius?: string;
-  width?: number;
+  width?: number | string;
   type?: string;
   showPasswordIcon?: boolean;
   showSubmitIcon?: boolean;
