@@ -18,6 +18,34 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewsBridge</title>
+    <script>
+      function setFaviconBasedOnBackground() {
+        const bodyStyle = getComputedStyle(document.body);
+        const bgColor = bodyStyle.backgroundColor;
+
+        // Extract RGB values from the background color
+        const match = bgColor.match(/rgba?\((\d+), (\d+), (\d+)/);
+        if (match) {
+          const r = parseInt(match[1], 10);
+          const g = parseInt(match[2], 10);
+          const b = parseInt(match[3], 10);
+
+          // Calculate brightness (perceived luminance formula)
+          const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+
+          // Set favicon based on brightness
+          const favicon = document.querySelector('link[rel="icon"]');
+          if (brightness > 127.5) {
+            favicon.href = "/logo-light-bg-no-text.png";
+          } else {
+            favicon.href = "/logo-dark-bg-no-text.png";
+          }
+        }
+      }
+
+      // Run the function on page load
+      window.addEventListener("load", setFaviconBasedOnBackground);
+    </script>
   </head>
   <body>
     <div id="root"></div>
