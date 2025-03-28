@@ -123,6 +123,7 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
           value={isMutable ? "Submit Rating" : "Adjust Rating"}
           width={120}
           height="h-8"
+          bgColor={color}
           handleClick={handleClick}
         ></Button>
       </div>
