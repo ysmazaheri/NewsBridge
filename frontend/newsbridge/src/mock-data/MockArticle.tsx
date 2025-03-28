@@ -12,5 +12,4 @@ export const mockArticle: UnbiasedArticleViewModel = {
     createdAt: "2025-03-18T00:00:00.000Z",
     sources: null,
     audienceBiasRating: 47,
-    //Todo: Add audience bias rating
 }

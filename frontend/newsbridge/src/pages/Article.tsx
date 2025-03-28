@@ -1,9 +1,10 @@
 import React from "react";
-import { FaBookmark } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 import { mockArticle } from "../mock-data/MockArticle";
 import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
+import Bookmark from "../components/Bookmark";
+
 const ArticlePage: React.FC = () => {
 
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
@@ -39,7 +40,7 @@ const ArticlePage: React.FC = () => {
                         </span>
                     </span>
                     {/* Bookmark */}
-                    <FaBookmark className="cursor-pointer text-secondary text-2xl" />
+                    <Bookmark size="text-3xl" />
                 </div>
             </div>
 
