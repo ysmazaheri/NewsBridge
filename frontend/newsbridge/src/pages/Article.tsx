@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 import { mockArticle } from "../mock-data/MockArticle";
 import { UnbiasedArticleViewModel, mapUnbiasedArticleToViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
+import CommentSection from "../components/CommentSection/CommentSection";
+
 const ArticlePage: React.FC = () => {
 
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
@@ -88,7 +90,7 @@ const ArticlePage: React.FC = () => {
             {/* Comments Section */}
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Comments</h2>
-                <p>No comments yet. Be the first to comment!</p>
+                <CommentSection />
             </div>
         </div>
     );
