@@ -59,9 +59,9 @@ const ArticlePage: React.FC = () => {
             {/* Article Summary */}
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Summary</h2>
-                <p>
+                <pre className="whitespace-pre-wrap font-sans italic">
                     {article.summary}
-                </p>
+                </pre>
             </div>
 
             <hr className="my-5 border-gray-300 border-1 w-full" />
@@ -69,9 +69,9 @@ const ArticlePage: React.FC = () => {
             {/* Full Article */}
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Full Article</h2>
-                <p>
+                <pre className="whitespace-pre-wrap font-sans">
                     {article.content}
-                </p>
+                </pre>
             </div>
 
             <hr className="my-5 border-gray-300 border-1 w-full" />
