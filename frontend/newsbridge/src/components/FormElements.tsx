@@ -136,6 +136,7 @@ export const Button = (props: ButtonProps) => {
   const widthClass = width ? width : fixedWidth;
   const heightClass = height ? height : "h-14";
   const cornerRadiusClass = cornerRadius ? cornerRadius : "rounded-2xl";
+  const bgColorClass = bgColor ? bgColor : "bg-primary";
   const borderColorClass = borderColor ? borderColor : "border-primary";
   const textColorClass = textColor ? textColor : "text-white";
   const boldnessClass = boldness ? boldness : "font-normal";
@@ -146,7 +147,7 @@ export const Button = (props: ButtonProps) => {
         onClick={handleClick}
         style={{ backgroundColor: bgColor }}
         className={`flex items-center justify-center gap-4 ${heightClass} w-full border ${textColorClass} ${cornerRadiusClass} 
-                      ${borderColorClass} text-md ${boldnessClass} transition-transform duration-300 ease-in-out 
+                      ${bgColorClass} ${borderColorClass} text-md ${boldnessClass} transition-transform duration-300 ease-in-out 
                       active:scale-75 hover:brightness-90 text-primary`}
       >
         {img && <img src={img} alt="button icon" className="w-10 h-10" />}
