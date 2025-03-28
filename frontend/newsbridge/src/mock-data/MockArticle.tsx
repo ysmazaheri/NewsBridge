@@ -11,5 +11,7 @@ export const mockArticle: UnbiasedArticle = {
     like_count: 23,
     genre: "Sample Genre",
     created_at: "2025-03-18T00:00:00.000Z",
-    audienceBiasRating: 80
+    audienceBiasRating: 80,
+    isBookedmark: false,
+    commentCount: 2
 }
