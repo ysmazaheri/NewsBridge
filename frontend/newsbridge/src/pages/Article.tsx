@@ -12,7 +12,8 @@ const ArticlePage: React.FC = () => {
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
 
     useEffect(() => {
-        setArticle(mapUnbiasedArticleToViewModel(mockArticle));
+        //Will be replaced with a call to the backend to get the article
+        setArticle(mockArticle);
     }, []);
 
     const handleBiasUpdate = (rating: number) => {
@@ -79,7 +80,7 @@ const ArticlePage: React.FC = () => {
                 {/* Audience Rating */}
                 <div className="w-full">
                     <h3 className="text-lg font-medium pb-3 text-center">Audience Bias Rating</h3>
-                    <NewsBridgeBiasScale rating={80} />
+                    <NewsBridgeBiasScale rating={article.audienceBiasRating} />
                 </div>
                 {/* User Rating */}
                 <div className="w-full">
