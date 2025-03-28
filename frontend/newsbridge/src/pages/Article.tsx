@@ -51,6 +51,8 @@ const ArticlePage: React.FC = () => {
                 </p>
             </div>
 
+            <hr className="my-5 border-gray-300 border-1 w-full" />
+
             {/* Full Article */}
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Full Article</h2>
@@ -58,6 +60,8 @@ const ArticlePage: React.FC = () => {
                     This is the full content of the article. It goes into detail about the topic and provides all the necessary information.
                 </p>
             </div>
+
+            <hr className="my-5 border-gray-300 border-1 w-full" />
 
             {/* Bias Ratings */}
             <div className="my-5 w-full flex justify-between space-x-20">
