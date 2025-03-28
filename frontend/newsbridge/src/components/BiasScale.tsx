@@ -121,7 +121,8 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
       <div className="flex justify-center mt-6">
         <Button
           value={isMutable ? "Submit Rating" : "Adjust Rating"}
-          width={200}
+          width={120}
+          height="h-8"
           handleClick={handleClick}
         ></Button>
       </div>
