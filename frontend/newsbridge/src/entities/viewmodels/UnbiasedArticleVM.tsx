@@ -12,6 +12,7 @@ export interface UnbiasedArticleViewModel {
   likeCount: number;
   genre?: string | null;
   createdAt: string;
+  audienceBiasRating: number;
 }
 
 export const mapUnbiasedArticleToViewModel = (article: UnbiasedArticle): UnbiasedArticleViewModel => ({
@@ -25,4 +26,5 @@ export const mapUnbiasedArticleToViewModel = (article: UnbiasedArticle): Unbiase
   likeCount: article.like_count,
   genre: article.genre,
   createdAt: article.created_at,
+  audienceBiasRating: article.audienceBiasRating,
 });
