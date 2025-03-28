@@ -10,6 +10,6 @@ export const mockArticle: UnbiasedArticle = {
     topic: "Sample Topic",
     like_count: 23,
     genre: "Sample Genre",
-    created_at: "2025-03-18T00:00:00.000Z"
-    //Todo: Add audience bias rating
+    created_at: "2025-03-18T00:00:00.000Z",
+    audienceBiasRating: 80
 }
