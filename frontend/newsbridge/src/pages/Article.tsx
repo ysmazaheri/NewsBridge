@@ -1,24 +1,32 @@
 import React from "react";
 import { FaBookmark } from "react-icons/fa";
+import { useState, useEffect } from "react";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
-
+import { mockArticle } from "../mock-data/MockArticle";
+import { UnbiasedArticleViewModel, mapUnbiasedArticleToViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 const ArticlePage: React.FC = () => {
+
+    const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
+
+    useEffect(() => {
+        setArticle(mapUnbiasedArticleToViewModel(mockArticle));
+    }, []);
 
     const handleBiasUpdate = (rating: number) => {
         console.log(rating);
     };
-
+    if(!article) return <div>Loading...</div>;
     return (
         <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-200">
             {/* Title */}
             <div className="flex w-full">
-                <h1 className="text-5xl">Sample Article Title</h1>
+                <h1 className="text-5xl">{article.title}</h1>
             </div>
 
             {/* Publication Date, Sources, and Bookmark */}
             <div className="flex w-full justify-between items-center">
                 {/* Publication Date */}
-                <h1 className="text-2xl text-secondary font-light">Month DD, YYYY</h1>
+                <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
                 <div className="flex items-center gap-8">
                     {/* Sources */}
                     <span className="flex items-center gap-1">
@@ -47,7 +55,7 @@ const ArticlePage: React.FC = () => {
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Summary</h2>
                 <p>
-                    This is a brief summary of the article. It provides an overview of the main points discussed.
+                    {article.summary}
                 </p>
             </div>
 
@@ -57,7 +65,7 @@ const ArticlePage: React.FC = () => {
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Full Article</h2>
                 <p>
-                    This is the full content of the article. It goes into detail about the topic and provides all the necessary information.
+                    {article.content}
                 </p>
             </div>
 
