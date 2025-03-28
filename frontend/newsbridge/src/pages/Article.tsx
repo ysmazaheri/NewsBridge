@@ -1,7 +1,13 @@
 import React from "react";
 import { FaBookmark } from "react-icons/fa";
+import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 
 const ArticlePage: React.FC = () => {
+
+    const handleBiasUpdate = (rating: number) => {
+        console.log(rating);
+    };
+
     return (
         <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-200">
             {/* Title */}
@@ -54,14 +60,16 @@ const ArticlePage: React.FC = () => {
             </div>
 
             {/* Bias Ratings */}
-            <div className="my-5 w-full flex justify-between">
-                <div>
-                    <h3 className="text-lg font-medium">Audience Bias Rating</h3>
-                    <p>Neutral</p>
+            <div className="my-5 w-full flex justify-between space-x-20">
+                {/* Audience Rating */}
+                <div className="w-full">
+                    <h3 className="text-lg font-medium pb-3 text-center">Audience Bias Rating</h3>
+                    <NewsBridgeBiasScale rating={80} />
                 </div>
-                <div>
-                    <h3 className="text-lg font-medium">Your Bias Rating</h3>
-                    <p>Neutral</p>
+                {/* User Rating */}
+                <div className="w-full">
+                    <h3 className="text-lg font-medium pb-3 text-center">Your Bias Rating</h3>
+                    <UserBiasScale initialRating={50} onChange={handleBiasUpdate} />
                 </div>
             </div>
 
