@@ -16,7 +16,7 @@ const CommentDisplay = ({ username, userComment, userImage }: CommentDisplayProp
       <img
         src={userImage}
         alt="User Image"
-        className="w-10 h-10 rounded-full object-cover mr-3"
+        className="w-10 h-10 rounded-full object-cover mr-3 flex-shrink-0"
       />
       <div className="flex flex-col">
         <h4 className="text-sm font-semibold text-gray-800 mb-1">{username}</h4>
