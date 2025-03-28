@@ -1,6 +1,6 @@
 import { UnbiasedArticle } from "../dtos/UnbiasedArticleDTO";
 
-export interface UnbiasedArticleViewModel {
+export interface UnbiasedArticlePreviewViewModel {
   id: number;
   title: string;
   summary: string;
@@ -12,7 +12,7 @@ export interface UnbiasedArticleViewModel {
   createdAt: string;
 }
 
-export const mapUnbiasedArticleToViewModel = (article: UnbiasedArticle): UnbiasedArticleViewModel => ({
+export const mapUnbiasedArticlePreviewToViewModel = (article: UnbiasedArticle): UnbiasedArticlePreviewViewModel => ({
   id: article.unbiased_article_id,
   title: article.title,
   summary: article.summary,
