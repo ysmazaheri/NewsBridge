@@ -3,6 +3,9 @@ import { FaBookmark } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 import { mockArticle } from "../mock-data/MockArticle";
+import CommentSection from "../components/CommentSection/CommentSection";
+import { mockComments } from "../mock-data/MockComments";
+
 import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 const ArticlePage: React.FC = () => {
 
@@ -89,7 +92,7 @@ const ArticlePage: React.FC = () => {
             {/* Comments Section */}
             <div className="my-5 w-full">
                 <h2 className="text-xl font-semibold">Comments</h2>
-                <p>No comments yet. Be the first to comment!</p>
+                <CommentSection comments={mockComments} />
             </div>
         </div>
     );

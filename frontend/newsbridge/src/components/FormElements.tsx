@@ -28,6 +28,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   handleClick: () => void;
 }
 
+interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  defaultValue: string;
+  value?: string;
+  bgColor?: string;
+  borderColor?: string;
+  cornerRadius?: string;
+  width?: string | number; // Allow both string and number for width
+  height?: string;
+  showSubmitIcon?: boolean;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onIconSubmit?: (value: string) => void;
+}
+
 export const TextField = (props: TextFieldProps) => {
   const {
     defaultValue,
@@ -134,6 +147,60 @@ export const Button = (props: ButtonProps) => {
         {img && <img src={img} alt="button icon" className="w-10 h-10" />}
         {value}
       </button>
+    </div>
+  );
+};
+
+export const TextArea = (props: TextAreaProps) => {
+  const {
+    defaultValue,
+    value,
+    bgColor,
+    borderColor,
+    cornerRadius,
+    width = fixedWidth,
+    height = "100px",
+    showSubmitIcon,
+    onChange,
+    onIconSubmit,
+  } = props;
+
+  const defaultValueClass = defaultValue ? defaultValue : "";
+  const bgColorClass = bgColor ? bgColor : "bg-tertiary";
+  const borderColorClass = borderColor ? borderColor : "border-tertiary";
+  const cornerRadiusClass = cornerRadius ? cornerRadius : "rounded-2xl";
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(e);
+  };
+
+  const handleSubmit = () => {
+    if (onIconSubmit) onIconSubmit(value || "");
+  };
+
+  return (
+    <div className="relative" style={{ width }}>
+      <textarea
+        placeholder={defaultValueClass}
+        value={value}
+        onChange={handleChange}
+        className={`p-4 text-md text-black border-2 w-full resize-none ${bgColorClass} 
+                          ${borderColorClass} ${cornerRadiusClass}`}
+        style={{
+          wordWrap: "break-word", // Ensures long text wraps to the next line
+          whiteSpace: "pre-wrap", // Preserves spaces and line breaks
+          paddingRight: showSubmitIcon ? "40px" : "10px", // Adds padding for the icon
+          height: height, // Sets the height of the textarea
+        }}
+      />
+      {showSubmitIcon && (
+        <img
+          src="submiticon.svg"
+          alt="Submit Icon"
+          onClick={handleSubmit}
+          className="absolute right-6 top-4 cursor-pointer w-[20px] h-[28px]"
+        />
+      )}
     </div>
   );
 };
