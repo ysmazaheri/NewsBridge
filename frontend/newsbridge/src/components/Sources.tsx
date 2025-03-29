@@ -1,15 +1,12 @@
 import React, { useState } from "react";
+import { NewsSourceViewModel } from "../entities/viewmodels/NewsSourceVM";
 
-interface Source {
-    name: string;
-    url: string;
-}
 
 interface SourcesProps {
-    sources: Source[];
+    sources: NewsSourceViewModel[];
 }
 
-const Sources: React.FC<SourcesProps> = ({ sources }) => {
+const Sources: React.FC<SourcesProps> = ({ sources }: SourcesProps) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     //Only show first 3, and the rest will be in dropdown
     //Have + {remaining sources} if more than 3
