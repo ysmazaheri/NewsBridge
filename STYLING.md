@@ -6,9 +6,9 @@
 
 | Color | Usage | Example |
 | :---- | :---- | :---- |
-| **Primary** (--color-primary) | \!\[\#6a7282\](https://via.placeholder.com/15/6a7282/000000?text=+) \`\#6a7282\`   | **Main UI elements**, major submit buttons, (ex. Sign in Button) |
-| **Secondary** (--color-secondary) | \!\[\#d4d4d4\](https://via.placeholder.com/15/d4d4d4/000000?text=+) \`\#d4d4d4\`  | **Subheaders**, less important UI elements (ex. Date in Article page) |
-| **Tertiary** (--color-tertiary) | \!\[\#f5f5f5\](https://via.placeholder.com/15/f5f5f5/000000?text=+) \`\#f5f5f5\` | **Lighter backgrounds**, commonly used as offset to primary color (ex. Navbar background color uses it and the text on top is primary color) |
+| **Primary** (--color-primary) | ![Primary](https://img.shields.io/badge/Primary-%236a7282-6a7282)   | **Main UI elements**, major submit buttons, (ex. Sign in Button) |
+| **Secondary** (--color-secondary) | ![Secondary](https://img.shields.io/badge/Secondary-%23d4d4d4-d4d4d4)  | **Subheaders**, less important UI elements (ex. Date in Article page) |
+| **Tertiary** (--color-tertiary) | ![Tertiary](https://img.shields.io/badge/Tertiary-%23f5f5f5-f5f5f5) | **Lighter backgrounds**, commonly used as offset to primary color (ex. Navbar background color uses it and the text on top is primary color) |
 
 # Component Behavior
 
