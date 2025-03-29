@@ -5,13 +5,14 @@ import { mockArticle } from "../mock-data/MockArticle";
 import { UnbiasedArticleViewModel, mapUnbiasedArticleToViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 import CommentSection from "../components/CommentSection/CommentSection";
 import { mockComments } from "../mock-data/MockComments";
-
+import { mockSources } from "../mock-data/MockSources";
+import Sources from "../components/Sources";
 import Bookmark from "../components/Bookmark";
+
 
 const ArticlePage: React.FC = () => {
 
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
-
     useEffect(() => {
         //Will be replaced with a call to the backend to get the article
         setArticle(mockArticle);
@@ -34,14 +35,7 @@ const ArticlePage: React.FC = () => {
                 <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
                 <div className="flex items-center gap-8">
                     {/* Sources */}
-                    <span className="flex items-center gap-1">
-                        Sources:
-                        <span className="flex -space-x-1">
-                            <span className="w-4 h-4 bg-primary rounded-full"></span>
-                            <span className="w-4 h-4 bg-secondary rounded-full"></span>
-                            <span className="w-4 h-4 bg-tertiary rounded-full"></span>
-                        </span>
-                    </span>
+                    <Sources sources={mockSources} />
                     {/* Bookmark */}
                     <Bookmark size="text-3xl" />
                 </div>
