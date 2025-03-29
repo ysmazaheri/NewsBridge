@@ -16,7 +16,7 @@ const LogOut: React.FC<LogOutProps> = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center z-2">
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative bg-white p-6 rounded-lg shadow-lg text-center">
                 <FaQuestionCircle className="w-12 h-12 mx-auto mb-4" />
