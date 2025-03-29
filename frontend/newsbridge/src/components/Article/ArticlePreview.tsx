@@ -4,7 +4,7 @@ import { NewsBridgeBiasScale } from "../BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
-
+import { useNavigate } from "react-router-dom";
 const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   title,
   summary,
@@ -14,10 +14,11 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   daysAgo,
   isBookmarked,
   commentCount,
+  id,
 }) => {
   const [currentLikes, setCurrentLikes] = useState(initialLikeCount);
   const [hasLiked, setHasLiked] = useState(false);
-
+  const navigate = useNavigate();
   const handleLike = () => {
     if (hasLiked) {
       setCurrentLikes(currentLikes - 1);
@@ -27,9 +28,13 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
       setHasLiked(true);
     }
   };
+  const handleClick = () => {
+    navigate(`/article/${id}`);
+  };
 
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">
+      {" "}
       {/* Article Image */}
       {imageUrl ? (
         <img
@@ -42,10 +47,12 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           No image available
         </div>
       )}
-
       <div className="bg-tertiary rounded-b-xl p-4">
         {/* Title */}
-        <h3 className="text-xl font-semibold text-primary mb-2 line-clamp-1">
+        <h3
+          className="text-xl font-semibold text-primary mb-2 line-clamp-1 cursor-pointer hover:brightness-90"
+          onClick={handleClick}
+        >
           {title}
         </h3>
 
