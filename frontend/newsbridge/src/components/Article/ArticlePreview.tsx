@@ -4,7 +4,7 @@ import { NewsBridgeBiasScale } from "../BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
-
+import { useNavigate } from "react-router-dom";
 const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   title,
   summary,
@@ -14,10 +14,11 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   daysAgo,
   isBookmarked,
   commentCount,
+  id,
 }) => {
   const [currentLikes, setCurrentLikes] = useState(initialLikeCount);
   const [hasLiked, setHasLiked] = useState(false);
-
+  const Navigate = useNavigate();
   const handleLike = () => {
     if (hasLiked) {
       setCurrentLikes(currentLikes - 1);
@@ -27,10 +28,12 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
       setHasLiked(true);
     }
   };
+  const handleClick = () => {
+    Navigate(`/article/${id}`);
+  }
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">
-      {/* Article Image */}
+    <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">      {/* Article Image */}
       {imageUrl ? (
         <img
           className="w-full h-64 object-cover rounded-t-xl border border-black"
@@ -98,6 +101,13 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
             <ShareButton onClick={() => console.log("Shared!")} />
           </div>
         </div>
+        <div className="items-center justify-center text-center mt-4">
+        <button className="text-blue-600 hover:underline cursor-pointer"
+          onClick={handleClick}
+          >
+            View Article
+          </button>
+      </div>
       </div>
     </div>
   );

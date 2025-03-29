@@ -13,7 +13,7 @@ import ResetPassword from "./pages/ResetPassword";
 import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Home from "./pages/Home";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
