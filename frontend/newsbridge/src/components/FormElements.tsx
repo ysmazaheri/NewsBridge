@@ -11,6 +11,8 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   showPasswordIcon?: boolean;
   showSubmitIcon?: boolean;
+  min?: string;
+  max?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onIconSubmit?: (value: string) => void;
 }
@@ -39,8 +41,10 @@ export const TextField = (props: TextFieldProps) => {
     type,
     showPasswordIcon,
     showSubmitIcon,
+    min,
+    max,
     onChange,
-    onIconSubmit
+    onIconSubmit,
   } = props;
 
   const defaultValueClass = defaultValue ? defaultValue : "";
@@ -65,7 +69,7 @@ export const TextField = (props: TextFieldProps) => {
 
   const handleSubmit = () => {
     if (onIconSubmit) onIconSubmit(value || "");
-  }
+  };
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
   };
@@ -79,6 +83,8 @@ export const TextField = (props: TextFieldProps) => {
         type={inputType}
         className={`p-4 text-md text-black border-2 w-full ${bgColorClass} 
                           ${borderColorClass} ${cornerRadiusClass}`}
+        min={min ? min : ""}
+        max={max ? max : ""}
       />
       {showPasswordIconClass && (
         <img
