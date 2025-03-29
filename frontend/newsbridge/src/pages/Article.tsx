@@ -22,7 +22,7 @@ const ArticlePage: React.FC = () => {
     };
     if(!article) return <div>Loading...</div>;
     return (
-        <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-200">
+        <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden max-w-4xl">
             {/* Title */}
             <div className="flex w-full">
                 <h1 className="text-5xl">{article.title}</h1>
