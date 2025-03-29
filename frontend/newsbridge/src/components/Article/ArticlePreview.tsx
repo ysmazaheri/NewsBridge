@@ -12,6 +12,7 @@ interface ArticlePreviewProps {
   daysAgo: string;
   isBookmarked: boolean;
   commentCount: number;
+  imageUrl: string;
 }
 
 const ArticlePreview: React.FC<ArticlePreviewProps> = ({
@@ -21,11 +22,19 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
   biasRating,
   daysAgo,
   commentCount,
+  imageUrl,
 }) => {
   const [likeCount, setLikeCount] = useState(likes);
+  const [hasLiked, setHasLiked] = useState(false);
 
   const handleLike = () => {
-    setLikeCount(likeCount + 1);
+    if (hasLiked) {
+      setLikeCount(likeCount - 1);
+      setHasLiked(false);
+    } else {
+      setLikeCount(likeCount + 1);
+      setHasLiked(true);
+    }
   };
 
   return (
@@ -33,11 +42,11 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
       {/* Image */}
       <img
         className="w-full h-64 object-cover rounded-t-xl border border-black"
-        src="https://via.placeholder.com/600x200"
+        src={imageUrl}
         alt="Article image placeholder"
       />
 
-      <div className="bg-tertiary rounded-b-xl px-4 py-3">
+      <div className="bg-tertiary rounded-b-xl p-4">
         {/* Title */}
         <h3 className="text-xl font-semibold text-primary mb-2 line-clamp-1">
           {title}
@@ -58,11 +67,23 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
           </div>
           {/* Bias level */}
           <div className="w-1/3 flex items-center justify-center gap-2">
-            <span className="text-xs">Bias Level:</span>
-            <NewsBridgeBiasScale rating={biasRating} />
+            <span className="text-sm">Bias Level:</span>
+            <div
+              className="inline-block"
+              style={{ width: "120px", height: "20px" }}
+            >
+              <div
+                style={{
+                  transform: "scale(0.75)",
+                  transformOrigin: "top left",
+                }}
+              >
+                <NewsBridgeBiasScale rating={biasRating} />
+              </div>
+            </div>
           </div>
           {/* Days ago and Bookmark */}
-          <div className="w-1/3 flex justify-end items-center gap-4">
+          <div className="w-1/3 flex justify-end items-center gap-10">
             <span className="text-gray-400">{daysAgo}</span>
             <Bookmark />
           </div>
@@ -74,7 +95,7 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
         <div className="flex items-center text-sm text-gray-600 mt-2">
           {/* Like Button */}
           <div className="w-1/3">
-            <LikeButton onClick={handleLike} />
+            <LikeButton onClick={handleLike} hasLiked={hasLiked} />
           </div>
           {/* Number of Comments */}
           <div className="w-1/3 text-center">
