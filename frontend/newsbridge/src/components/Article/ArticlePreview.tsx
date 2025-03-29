@@ -18,7 +18,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
 }) => {
   const [currentLikes, setCurrentLikes] = useState(initialLikeCount);
   const [hasLiked, setHasLiked] = useState(false);
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const handleLike = () => {
     if (hasLiked) {
       setCurrentLikes(currentLikes - 1);
@@ -29,11 +29,13 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
     }
   };
   const handleClick = () => {
-    Navigate(`/article/${id}`);
-  }
+    navigate(`/article/${id}`);
+  };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">      {/* Article Image */}
+    <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">
+      {" "}
+      {/* Article Image */}
       {imageUrl ? (
         <img
           className="w-full h-64 object-cover rounded-t-xl border border-black"
@@ -45,10 +47,12 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           No image available
         </div>
       )}
-
       <div className="bg-tertiary rounded-b-xl p-4">
         {/* Title */}
-        <h3 className="text-xl font-semibold text-primary mb-2 line-clamp-1">
+        <h3
+          className="text-xl font-semibold text-primary mb-2 line-clamp-1 cursor-pointer hover:brightness-90"
+          onClick={handleClick}
+        >
           {title}
         </h3>
 
@@ -101,13 +105,6 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
             <ShareButton onClick={() => console.log("Shared!")} />
           </div>
         </div>
-        <div className="items-center justify-center text-center mt-4">
-        <button className="text-blue-600 hover:underline cursor-pointer"
-          onClick={handleClick}
-          >
-            View Article
-          </button>
-      </div>
       </div>
     </div>
   );
