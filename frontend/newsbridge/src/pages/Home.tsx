@@ -1,9 +1,11 @@
-import ArticlePreview from "../components/Article/ArticlePreview"
+import ArticlePreview from "../components/Article/ArticlePreview";
 
 const Home = () => {
-    return (
-        <ArticlePreview />
-    );
-}
+  return (
+    <div className="p-4">
+      <ArticlePreview />
+    </div>
+  );
+};
 
 export default Home;
