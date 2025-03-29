@@ -9,4 +9,6 @@ export interface UnbiasedArticle {
   genre?: string | null; // Optional genre of the unbiased article
   created_at: string; // Timestamp of when the unbiased article was created
   audienceBiasRating: number; // Rating of the audience bias
+  isBookedmark: boolean;
+  commentCount: number;
 }
