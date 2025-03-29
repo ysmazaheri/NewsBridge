@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import LogOut from '../LogOut';
+import LogOut from '../Authentication/LogOut';
 import { Link } from "react-router-dom";
 
 const ProfileDropdown = () => {

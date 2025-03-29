@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { NavbarButton } from "./NavbarButton";
 import ProfileDropdown from "./ProfileDropdown";
 import SearchComponent from "../Search/SearchComponent";
+import { useNavigate } from "react-router-dom";
 //Navbar component
 const Navbar = () => {
   //State to store current date
   const [curDate, setCurDate] = useState<string>("");
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [logoSrc, setLogoSrc] = useState<string>("/logo-light-bg.png");
+  const navigate = useNavigate();
 
   //On component mount, get current date and set it to state
   useEffect(() => {
@@ -64,7 +66,7 @@ const Navbar = () => {
             borderColor="border-transparent"
             img="/trending.svg"
             height="h-16"
-            handleClick={() => console.log("Trending clicked")}
+            handleClick={() => navigate("/home")}
           />
           <NavbarButton
             value="Search"
