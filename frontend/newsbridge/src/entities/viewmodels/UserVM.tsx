@@ -14,7 +14,7 @@ export interface UserViewModel {
 export const mapUserToViewModel = (user: User): UserViewModel => ({
   id: user.user_id,
   firstName: user.first_name,
-  lastName: user.first_name,
+  lastName: user.last_name,
   fullName: `${user.first_name} ${user.last_name}`,
   email: user.email,
   profilePicUrl: user.profile_pic ? `/images/${user.profile_pic}` : null,
