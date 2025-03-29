@@ -48,10 +48,9 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
           <span className="font-bold">Summary:</span> {summary}
         </p>
 
-        {/* Divider */}
+        {/* Line */}
         <hr className="border-gray-300 mb-3" />
 
-        {/* Footer row: Likes, Bias level, Days ago and Bookmark */}
         <div className="flex items-center text-sm text-gray-600">
           {/* Likes */}
           <div className="w-1/3">
@@ -69,20 +68,19 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
           </div>
         </div>
 
-        {/* Divider */}
+        {/* Line */}
         <hr className="border-gray-300 mt-2" />
 
-        {/* Like, Comments, and Share Buttons */}
         <div className="flex items-center text-sm text-gray-600 mt-2">
-          {/* Like Button on the left */}
+          {/* Like Button */}
           <div className="w-1/3">
             <LikeButton onClick={handleLike} />
           </div>
-          {/* Number of Comments centered */}
+          {/* Number of Comments */}
           <div className="w-1/3 text-center">
             <span className="text-gray-400">{commentCount} comments</span>
           </div>
-          {/* Share Button on the right */}
+          {/* Share Button */}
           <div className="w-1/3 flex justify-end">
             <ShareButton onClick={() => console.log("Shared!")} />
           </div>
