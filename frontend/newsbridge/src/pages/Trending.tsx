@@ -80,12 +80,12 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
   },
 ]
 const itemPerPage = 3
-const Home = () => {
+const Trending = () => {
   const [curPage, setCurPage] = useState(1);
   const totalPages = Math.ceil(mockArticles.length / itemPerPage);
 
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage: number) => {
     if(newPage >=1 && newPage <= totalPages){
       setCurPage(newPage)
     }
@@ -97,7 +97,7 @@ const Home = () => {
 
   return (
     <div className="p-4">
-            <div className="bg-gray-100 rounded-xl shadow-md p-4 mb-6 text-center">
+      <div className="bg-gray-100 rounded-xl shadow-md p-4 mb-6 text-center">
         <h2 className="text-3xl font-bold">Trending</h2>
         </div>
         <div className="space-y-10">
@@ -139,4 +139,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Trending;
