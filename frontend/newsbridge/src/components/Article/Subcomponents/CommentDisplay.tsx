@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { lineThreshold } from '../../../utils/constants';
 
 interface CommentDisplayProps {
   username: string;
@@ -8,8 +9,7 @@ interface CommentDisplayProps {
 
 const CommentDisplay = ({ username, userComment, userImage }: CommentDisplayProps) => {
   const [expanded, setExpanded] = useState(false);
-  const THRESHOLD = 200; 
-  const isLongComment = userComment.length > THRESHOLD;
+  const isLongComment = userComment.length > lineThreshold;
 
   return (
     <div className="flex items-start bg-secondary p-4 rounded-2xl border border-secondary max-w-xl">

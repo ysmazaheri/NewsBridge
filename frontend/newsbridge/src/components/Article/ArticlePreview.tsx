@@ -19,6 +19,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   const [currentLikes, setCurrentLikes] = useState(initialLikeCount);
   const [hasLiked, setHasLiked] = useState(false);
   const navigate = useNavigate();
+  
   const handleLike = () => {
     if (hasLiked) {
       setCurrentLikes(currentLikes - 1);

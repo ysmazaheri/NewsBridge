@@ -3,6 +3,7 @@ import { TextField, Button } from "../Form/FormElements";
 import ReactMarkdown from 'react-markdown';
 import { Components } from 'react-markdown';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { validationRulesAuth } from "../../utils/constants";
 
 interface AuthenticationFormProps {
   header: string;
@@ -44,13 +45,6 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-8 text-lg text-justify p-2" {...props} />,
   };
 
-  const validationRules = [
-  { key: 'length', label: 'At least 8 characters' },
-  { key: 'hasUpperCase', label: 'At least one uppercase letter' },
-  { key: 'hasLowerCase', label: 'At least one lowercase letter' },
-  { key: 'hasSpecialChar', label: 'At least one special character' },
-  ]
-
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-150">
       <h1 className="text-6xl font-bold mb-6">{header}</h1>
@@ -73,7 +67,7 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
       ))}
       {passwordValidation && (
         <div className="mt-2 text-sm text-gray-600 py-4">
-          {validationRules.map(({ key, label }) => (
+          {validationRulesAuth.map(({ key, label }) => (
             <div key={key} className="flex items-center mt-1">
               <span style={{ color: passwordValidation[key as keyof typeof passwordValidation] ? 'green' : 'red' }}>
                 {passwordValidation[key as keyof typeof passwordValidation] ? <FaCheckCircle /> : <FaTimesCircle />}
