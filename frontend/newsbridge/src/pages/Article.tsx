@@ -5,7 +5,7 @@ import { mockArticle } from "../mock-data/MockArticle";
 import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 import CommentSection from "../components/Article/CommentSection/CommentSection";
 import { mockComments } from "../mock-data/MockComments";
-import { mockSources } from "../mock-data/MockSources";
+import { mockSourceArticles } from "../mock-data/MockSourceArticles";
 import Sources from "../components/Article/Partials/Sources";
 import Bookmark from "../components/Article/Partials/Bookmark";
 import ShareButton from "../components/Article/Partials/ShareButton";
@@ -51,7 +51,7 @@ const ArticlePage: React.FC = () => {
                 <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
                 <div className="flex items-center gap-2">
                     {/* Sources */}
-                    <Sources sources={mockSources} />
+                    <Sources articles={mockSourceArticles} />
                     {/* Like */}
                     <LikeButton onClick={handleLike} hasLiked={hasLiked} />
                     {/* Bookmark */}
