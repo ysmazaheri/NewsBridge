@@ -18,7 +18,7 @@ import ArticlePage from "./pages/Article";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/article/:id", "/search"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/profile", "/bookmark", "/article/:id", "/search"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/bias-scale-page" element={<BiasScalePage />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/bookmark" element={<BookmarkedPage />} />
         <Route path="/search" element={<Search />} />
         <Route path="/article/:id" element={
