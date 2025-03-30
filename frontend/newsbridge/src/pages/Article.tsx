@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
-import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 import CommentSection from "../components/Article/CommentSection/CommentSection";
 import Sources from "../components/Article/Partials/Sources";
 import Bookmark from "../components/Article/Partials/Bookmark";
 import ShareButton from "../components/Article/Partials/ShareButton";
 import LikeButton from "../components/Article/Partials/LikeButton";
-import { ArticleViewModel } from "../entities/viewmodels/ArticleVM";
-import { CommentViewModel } from "../entities/viewmodels/CommentVM";
+import { mockSourceArticles } from "../mock-data/mockSourceArticles";
+import { mockComments } from "../mock-data/MockComments";
+import { mockArticles } from "../mock-data/MockArticles";
+const ArticlePage: React.FC = () => {
+    const [hasLiked, setHasLiked] = useState(false);
 
-interface ArticlePageProps {
-  article: UnbiasedArticleViewModel;
-  comments: CommentViewModel[];
-  sourceArticles: ArticleViewModel[];
-}
+    const { id } = useParams<{ id: string }>();
 
-const ArticlePage: React.FC<ArticlePageProps> = ({ article, comments, sourceArticles }) => {
-  const [hasLiked, setHasLiked] = useState(false);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
+    if (!id) {
+        return <div>Article not found</div>;
+    }
+    // TODO: Replace with a database call that retrieves the article by ID
+    const article = mockArticles.find((article) => article.id === parseInt(id));
+ 
+  if (!article) {
+    return <div>Article not found</div>;
+    }
   const handleLike = () => {
     if (hasLiked) {
       // TODO: Database call to add/remove a "like" DTO
@@ -47,7 +56,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ article, comments, sourceArti
         <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
         <div className="flex items-center gap-2">
           {/* Sources */}
-          <Sources articles={sourceArticles} />
+          <Sources articles={mockSourceArticles} />
           {/* Like */}
           <LikeButton onClick={handleLike} hasLiked={hasLiked} />
           {/* Bookmark */}
@@ -99,7 +108,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ article, comments, sourceArti
       {/* Comments Section */}
       <div className="my-5 w-full">
         <h2 className="text-xl font-semibold">Comments</h2>
-        <CommentSection comments={comments} />
+        <CommentSection comments={mockComments} />
       </div>
     </div>
   );

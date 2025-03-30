@@ -3,6 +3,7 @@ import {
   Route,
   Routes,
   useLocation,
+  matchPath,
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/NavigationBar/Navbar";
@@ -15,13 +16,13 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import ArticlePage from "./pages/Article";
 
-import { mockArticle } from "./mock-data/MockArticle";
+import { mockArticle } from "./mock-data/MockArticles";
 import { mockComments } from "./mock-data/MockComments";
 import { mockSourceArticles } from "./mock-data/mockSourceArticles";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/article", "/search"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/article/:id", "/search"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -37,11 +38,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/bookmark" element={<BookmarkedPage />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/article" element={
+        <Route path="/article/:id" element={
           <ArticlePage
-            article={mockArticle}
-            comments={mockComments}
-            sourceArticles={mockSourceArticles}
+          
           />
         } />
         {/* Add more routes here as needed */}
@@ -52,7 +51,9 @@ function App() {
 
 function ConditionalNavbar() {
   const location = useLocation();
-  const showNavbar = navbarRoutes.includes(location.pathname);
+  const showNavbar = navbarRoutes.some((route) =>
+    matchPath(route, location.pathname)
+  )
 
   return showNavbar ? <Navbar /> : null;
 }
