@@ -14,8 +14,9 @@ import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import BookmarkedPage from "./pages/BookmarkedPage";
+import Search from "./pages/Search";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/search"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />} />
         <Route path="/bookmark" element={<BookmarkedPage />} />
+        <Route path="/search" element={<Search />} />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>

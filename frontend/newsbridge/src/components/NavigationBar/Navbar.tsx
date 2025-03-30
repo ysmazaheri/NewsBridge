@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { NavbarButton } from "./NavbarButton";
 import ProfileDropdown from "./ProfileDropdown";
-import SearchComponent from "../Search/SearchComponent";
+// import SearchComponent from "../Search/SearchComponent";
 import { useNavigate } from "react-router-dom";
 //Navbar component
 const Navbar = () => {
   //State to store current date
   const [curDate, setCurDate] = useState<string>("");
-  const [showSearch, setShowSearch] = useState<boolean>(false);
+  // const [showSearch, setShowSearch] = useState<boolean>(false);
   const [logoSrc, setLogoSrc] = useState<string>("/logo-light-bg.png");
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const Navbar = () => {
             borderColor="border-transparent"
             img="/searchicon.svg"
             height="h-16"
-            handleClick={() => setShowSearch(!showSearch)}
+            handleClick={() => navigate("/search")}
           />
           <NavbarButton
             value="Bookmarked"
@@ -95,7 +95,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div>{showSearch && <SearchComponent />}</div>
+      {/* <div>{showSearch && <SearchComponent />}</div> */}
     </div>
   );
 };
