@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, ChangeEvent, FC } from "react";
 import { TextField, Button } from "../components/Form/FormElements";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteAccount from "../components/Profile/DeleteAccount";
@@ -7,26 +7,25 @@ import {
   mapUserToViewModel,
 } from "../entities/viewmodels/UserVM";
 import mockUser from "../mocks/mockUser";
+import { inputFieldsProfile } from "../utils/constants";
 
 // We will utilize this VM to load data into our component
 const userVM: UserViewModel = mapUserToViewModel(mockUser);
-
 const today: string = new Date().toISOString().split("T")[0];
 
-const ProfilePage: React.FC = () => {
+const ProfilePage: FC = () => {
   const [displayData, setDisplayData] = useState(userVM);
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     date_of_birth: "",
     email: "",
   });
-
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>,
     formName: string
   ) => {
     setFormData({
@@ -63,7 +62,6 @@ const ProfilePage: React.FC = () => {
         formData.lastName.trim() !== "" ? formData.lastName : prevData.lastName;
       const updatedEmail =
         formData.email.trim() !== "" ? formData.email : prevData.email;
-
       return {
         ...prevData,
         firstName: updatedFirstName,
@@ -72,17 +70,12 @@ const ProfilePage: React.FC = () => {
         fullName: `${updatedFirstName} ${updatedLastName}`,
       };
     });
-    // Once backend is implemented, this will send the changes to backend through some API call. Utilize mockData variable + formData
     console.log("Submitted data:", formData);
   };
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // Currently : Updates the user's profile picture in state
-      // To Do: Upload to the backend
       console.log("File selected:", file);
       const imageURL = URL.createObjectURL(file);
       setDisplayData((prevState) => ({
@@ -93,8 +86,6 @@ const ProfilePage: React.FC = () => {
   };
 
   const handleProfilePicClick = () => {
-    console.log("Profile pic clicked");
-    // Trigger file input click
     fileInputRef.current?.click();
   };
 
@@ -117,8 +108,7 @@ const ProfilePage: React.FC = () => {
                 alt="Profile"
                 className="w-full h-full rounded-full object-cover"
               />
-
-              {/* Extra Hover Effect with Plus Icon */}
+              {/* Hover Effect with Plus Icon */}
               <div className="absolute inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <span className="text-white text-4xl font-bold -mt-2">+</span>
               </div>
@@ -135,7 +125,7 @@ const ProfilePage: React.FC = () => {
         </div>
 
         {/* Save Button */}
-        <div className="mt-17 flex justify-end">
+        <div className="flex justify-end items-center">
           <Button
             value="Save Changes"
             width={160}
@@ -146,59 +136,30 @@ const ProfilePage: React.FC = () => {
           />
         </div>
 
-        {/* User Input Fields */}
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            First Name
-          </label>
-          <div className="mt-2">
-            <TextField
-              defaultValue={"Your First Name"}
-              onChange={(e) => handleInputChange(e, "firstName")}
-              width={"100%"}
-            />
-          </div>
+        {/* User Input Fields (mapped) */}
+        <div className="col-span-2 grid grid-cols-2 gap-4 mt-6">
+          {inputFieldsProfile.map((field) => (
+            <div key={field.field}>
+              <label className="block text-sm font-medium text-gray-600">
+                {field.label}
+              </label>
+              <div className="mt-2">
+                <TextField
+                  defaultValue={field.defaultValue}
+                  onChange={(e) => handleInputChange(e, field.field)}
+                  width="100%"
+                  type={field.type}
+                  {...(field.type === "date" && {
+                    min: field.min,
+                    max: field.max,
+                  })}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Last Name
-          </label>
-          <div className="mt-2">
-            <TextField
-              defaultValue={"Your Last Name"}
-              onChange={(e) => handleInputChange(e, "lastName")}
-              width={"100%"}
-            />
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Email
-          </label>
-          <div className="mt-2">
-            <TextField
-              defaultValue={"Your Email Address"}
-              onChange={(e) => handleInputChange(e, "email")}
-              width={"100%"}
-            />
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Date of Birth
-          </label>
-          <div className="mt-2">
-            <TextField
-              defaultValue={"Your DOB"}
-              onChange={(e) => handleInputChange(e, "date_of_birth")}
-              width={"100%"}
-              type={"date"}
-              min={"1900-01-01"}
-              max={today}
-            />
-          </div>
-        </div>
-        <div className="col-span-2 mt-5 flex justify-left">
+
+        <div className="col-span-2 mt-5 flex justify-start">
           <Button
             value="Delete Account"
             width={160}
@@ -211,6 +172,7 @@ const ProfilePage: React.FC = () => {
           />
         </div>
       </div>
+
       <input
         ref={fileInputRef}
         type="file"
@@ -219,9 +181,11 @@ const ProfilePage: React.FC = () => {
         className="hidden"
       />
       <ToastContainer />
-      <div className="text-primary">
-        {isDeleteOpen && <DeleteAccount onClose={() => setDeleteOpen(false)} />}
-      </div>
+      {isDeleteOpen && (
+        <div className="text-primary">
+          <DeleteAccount onClose={() => setDeleteOpen(false)} />
+        </div>
+      )}
     </div>
   );
 };
