@@ -201,7 +201,7 @@ export const TextArea = (props: TextAreaProps) => {
       />
       {showSubmitIcon && (
         <img
-          src="submiticon.svg"
+          src="/submiticon.svg"
           alt="Submit Icon"
           onClick={handleSubmit}
           className="absolute right-6 top-4 cursor-pointer w-[20px] h-[28px]"
