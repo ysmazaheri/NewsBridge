@@ -8,19 +8,32 @@ import { mockComments } from "../mock-data/MockComments";
 import { mockSources } from "../mock-data/MockSources";
 import Sources from "../components/Article/Partials/Sources";
 import Bookmark from "../components/Article/Partials/Bookmark";
+import ShareButton from "../components/Article/Partials/ShareButton";
+import LikeButton from "../components/Article/Partials/LikeButton";
 
 
 const ArticlePage: React.FC = () => {
 
+    const [hasLiked, setHasLiked] = useState(false);
+    const handleLike = () => {
+        if (hasLiked) {
+          // TODO: Database call to add/remove a "like" DTO
+          // TODO: Database call to increment/decrement the article like count
+          setHasLiked(false);
+        } else {
+          setHasLiked(true);
+        }
+      };
+
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
     useEffect(() => {
-        //TODO: Will be replaced with a call to the backend to get the article
+        // TODO: Will be replaced with a call to the backend to get the article
         setArticle(mockArticle);
     }, []);
 
     const handleBiasUpdate = (rating: number) => {
-        //TODO: Will be replaced with a call to the backend
-        // Will update the bias rating involving the current user + article, as well as the article's net bias rating
+        // TODO: Will be replaced with a call to the backend
+        // TODO: Will update the bias rating involving the current user + article, as well as the article's net bias rating
         console.log(rating);
     };
 
@@ -32,15 +45,20 @@ const ArticlePage: React.FC = () => {
                 <h1 className="text-5xl">{article.title}</h1>
             </div>
 
-            {/* Publication Date, Sources, and Bookmark */}
+            {/* Header Meta Data*/}
             <div className="flex w-full justify-between items-center">
                 {/* Publication Date */}
                 <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-2">
                     {/* Sources */}
                     <Sources sources={mockSources} />
+                    {/* Like */}
+                    <LikeButton onClick={handleLike} hasLiked={hasLiked} />
                     {/* Bookmark */}
                     <Bookmark size="text-3xl" />
+                    {/* Share */}
+                    {/* TODO: Actually implement a share link */}
+                    <ShareButton onClick={() => console.log("Shared!")} />
                 </div>
             </div>
 
