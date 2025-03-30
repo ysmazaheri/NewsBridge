@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Bookmark from "../Bookmark";
+import Bookmark from "./Partials/Bookmark";
 import { NewsBridgeBiasScale } from "../BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";

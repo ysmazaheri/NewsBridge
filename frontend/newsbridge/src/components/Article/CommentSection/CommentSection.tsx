@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { TextArea } from "../../components/FormElements";
+import { TextArea } from "../../../components/FormElements";
 import CommentDisplay from "./CommentDisplay";
-import { CommentViewModel } from "../../entities/viewmodels/CommentVM";
+import { CommentViewModel } from "../../../entities/viewmodels/CommentVM";
 
 interface CommentSectionProps {
   comments: CommentViewModel[];
@@ -19,11 +19,13 @@ function CommentSection({ comments: initialComments }: CommentSectionProps) {
     if (value.trim()) {
       setComments([
         ...comments,
-        // TODO: Replace with actual user data from authentication context or state management
         {
           id: comments.length + 1,
+          // TODO: Replace with actual user data from authentication context or state management
           user: {
             id: 1,
+            firstName: "Current",
+            lastName: "User",
             fullName: "Current User",
             email: "currentuser@example.com",
             profilePicUrl: "/person.svg",
@@ -36,6 +38,7 @@ function CommentSection({ comments: initialComments }: CommentSectionProps) {
       ]);
       setText("");
       // TODO: Add new comment to database
+      // TODO: Update comment count in the unbaised article DB entry (used in preview)
     }
   };
 

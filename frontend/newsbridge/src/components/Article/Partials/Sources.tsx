@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NewsSourceViewModel } from "../entities/viewmodels/NewsSourceVM";
+import { NewsSourceViewModel } from "../../../entities/viewmodels/NewsSourceVM";
 
 
 interface SourcesProps {
@@ -46,6 +46,7 @@ const Sources: React.FC<SourcesProps> = ({ sources }: SourcesProps) => {
                                         {source.name[0]}
                                     </span>
                                 <a 
+                                    // TODO: Change this to the article URL, not news source URL.
                                     href={source.url} 
                                     target="_blank" 
                                     rel="noreferrer noopener"

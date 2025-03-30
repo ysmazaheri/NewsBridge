@@ -2,25 +2,28 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 import { mockArticle } from "../mock-data/MockArticle";
-import { UnbiasedArticleViewModel, mapUnbiasedArticleToViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
-import CommentSection from "../components/CommentSection/CommentSection";
+import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
+import CommentSection from "../components/Article/CommentSection/CommentSection";
 import { mockComments } from "../mock-data/MockComments";
 import { mockSources } from "../mock-data/MockSources";
-import Sources from "../components/Sources";
-import Bookmark from "../components/Bookmark";
+import Sources from "../components/Article/Partials/Sources";
+import Bookmark from "../components/Article/Partials/Bookmark";
 
 
 const ArticlePage: React.FC = () => {
 
     const [article, setArticle] = useState<UnbiasedArticleViewModel | null>(null);
     useEffect(() => {
-        //Will be replaced with a call to the backend to get the article
+        //TODO: Will be replaced with a call to the backend to get the article
         setArticle(mockArticle);
     }, []);
 
     const handleBiasUpdate = (rating: number) => {
+        //TODO: Will be replaced with a call to the backend
+        // Will update the bias rating involving the current user + article, as well as the article's net bias rating
         console.log(rating);
     };
+
     if(!article) return <div>Loading...</div>;
     return (
         <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden max-w-4xl">
