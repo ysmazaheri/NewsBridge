@@ -2,27 +2,14 @@ import React, { useState, useRef } from "react";
 import { TextField, Button } from "../components/Form/FormElements";
 import { ToastContainer, toast } from "react-toastify";
 import DeleteAccount from "../components/Profile/DeleteAccount";
-import { User } from "../entities/dtos/UserDTO";
 import {
   UserViewModel,
   mapUserToViewModel,
 } from "../entities/viewmodels/UserVM";
-
-// Mimics data we would retrieve from some API call and/or send to API
-const mockData: User = {
-  user_id: 100,
-  first_name: "Kieran",
-  last_name: "Serra",
-  email: "kieranserra@umass.edu",
-  password_hash: "dk1312i3das",
-  profile_pic: null,
-  date_of_birth: "02/13/2004",
-  role: "user",
-  created_at: "02/13/2004",
-};
+import mockUser from "../mocks/mockUser";
 
 // We will utilize this VM to load data into our component
-const userVM: UserViewModel = mapUserToViewModel(mockData);
+const userVM: UserViewModel = mapUserToViewModel(mockUser);
 
 const today: string = new Date().toISOString().split("T")[0];
 

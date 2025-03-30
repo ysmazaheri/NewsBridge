@@ -66,7 +66,7 @@ const Navbar = () => {
             borderColor="border-transparent"
             img="/trending.svg"
             height="h-16"
-            handleClick={() => navigate("/home")}
+            handleClick={() => navigate("/trending")}
           />
           <NavbarButton
             value="Search"

@@ -14,7 +14,7 @@ import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Profile from "./pages/Profile";
 import Trending from "./pages/Trending";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/trending"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
