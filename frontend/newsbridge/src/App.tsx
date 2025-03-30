@@ -21,7 +21,7 @@ import { mockSourceArticles } from "./mock-data/mockSourceArticles";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/article", "search"]; // Add paths here that should have the Navbar
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/profile", "/bookmark", "/article", "/search"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
