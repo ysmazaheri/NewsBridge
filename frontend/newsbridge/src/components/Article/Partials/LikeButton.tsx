@@ -17,7 +17,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ hasLiked, onClick }) => {
         className="w-5 h-5"
       />
       <span
-        className={`text-sm ${hasLiked ? "text-[#484EE7]" : "text-gray-400"}`}
+        className={`text-sm ${hasLiked ? "text-[#484EE7]" : "text-gray-400"} hidden sm:inline`}
       >
         Like
       </span>
