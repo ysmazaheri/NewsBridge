@@ -15,10 +15,6 @@ import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import ArticlePage from "./pages/Article";
-
-import { mockArticle } from "./mock-data/MockArticles";
-import { mockComments } from "./mock-data/MockComments";
-import { mockSourceArticles } from "./mock-data/MockSourceArticles";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 
