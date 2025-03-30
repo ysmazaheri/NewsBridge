@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fixedWidth } from "../utils/constants";
+import { fixedWidth } from "../../utils/constants";
 
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   defaultValue: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaQuestionCircle } from "react-icons/fa";
-import { Button } from "./FormElements";
+import { Button } from "../Form/FormElements";
 
 interface DeleteAccountProps {
   onClose: () => void;

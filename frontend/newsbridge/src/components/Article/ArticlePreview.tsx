@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Bookmark from "../Bookmark";
-import { NewsBridgeBiasScale } from "../BiasScale";
-import LikeButton from "./Partials/LikeButton";
-import ShareButton from "./Partials/ShareButton";
+import Bookmark from "./Subcomponents/Bookmark";
+import { NewsBridgeBiasScale } from "./Subcomponents/BiasScale";
+import LikeButton from "./Subcomponents/LikeButton";
+import ShareButton from "./Subcomponents/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
 import { useNavigate } from "react-router-dom";
 const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({

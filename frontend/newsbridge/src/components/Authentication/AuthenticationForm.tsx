@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Button } from "../FormElements";
+import { TextField, Button } from "../Form/FormElements";
 import ReactMarkdown from 'react-markdown';
 import { Components } from 'react-markdown';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';

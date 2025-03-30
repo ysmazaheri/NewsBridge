@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button, TextField } from "../../components/FormElements";
-import Bookmark from "../../components/Bookmark";
-import CommentDisplay from "../../components/CommentDisplay";
+import { Button, TextField } from "../../components/Form/FormElements";
+import Bookmark from "../../components/Article/Subcomponents/Bookmark";
+import CommentDisplay from "../../components/Article/Subcomponents/CommentDisplay";
 
 function FormElementsPage() {
   const [text, setText] = useState("");

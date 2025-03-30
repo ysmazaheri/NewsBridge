@@ -1,4 +1,4 @@
-import { NewsBridgeBiasScale, UserBiasScale } from "../../components/BiasScale";
+import { NewsBridgeBiasScale, UserBiasScale } from "../../components/Article/Subcomponents/BiasScale";
 
 function BiasScalePage() {
   const handleBiasUpdate = (rating: number) => {

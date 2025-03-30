@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import { TextField, Button } from "../components/FormElements";
+import { TextField, Button } from "../components/Form/FormElements";
 import { ToastContainer, toast } from "react-toastify";
-import DeleteAccount from "../components/DeleteAccount";
+import DeleteAccount from "../components/Profile/DeleteAccount";
 import { User } from "../entities/dtos/UserDTO";
 import {
   UserViewModel,
