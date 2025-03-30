@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Bookmark from "../Bookmark";
+import Bookmark from "./Partials/Bookmark";
 import { NewsBridgeBiasScale } from "../BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";
@@ -21,6 +21,8 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   const navigate = useNavigate();
   const handleLike = () => {
     if (hasLiked) {
+      // TODO: Database call to add/remove a "like" DTO
+      // TODO: Database call to increment/decrement the article like count
       setCurrentLikes(currentLikes - 1);
       setHasLiked(false);
     } else {
@@ -102,7 +104,8 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           </div>
           {/* Share Button */}
           <div className="w-1/3 flex justify-end">
-            <ShareButton onClick={() => console.log("Shared!")} />
+            {/* TODO: Actually implement a share link */}
+            <ShareButton onClick={() => console.log("Shared!")} /> 
           </div>
         </div>
       </div>

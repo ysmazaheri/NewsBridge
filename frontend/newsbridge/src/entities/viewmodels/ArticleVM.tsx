@@ -1,8 +1,9 @@
 import { Article } from "../dtos/ArticleDTO";
+import { NewsSourceViewModel } from "./NewsSourceVM";
 
 export interface ArticleViewModel {
   id: number;
-  sourceId: number;
+  source: NewsSourceViewModel | null; //TODO: Remove acceptance of null as an option here;
   title: string;
   summary?: string | null;
   content: string;
@@ -15,7 +16,7 @@ export interface ArticleViewModel {
 
 export const mapArticleToViewModel = (article: Article): ArticleViewModel => ({
   id: article.article_id,
-  sourceId: article.source_id,
+  source: null, //TODO: Get the user using a database call
   title: article.title,
   summary: article.summary,
   content: article.content,
