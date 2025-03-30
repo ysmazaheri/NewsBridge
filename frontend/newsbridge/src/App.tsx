@@ -18,7 +18,7 @@ import ArticlePage from "./pages/Article";
 
 import { mockArticle } from "./mock-data/MockArticles";
 import { mockComments } from "./mock-data/MockComments";
-import { mockSourceArticles } from "./mock-data/mockSourceArticles";
+import { mockSourceArticles } from "./mock-data/MockSourceArticles";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 

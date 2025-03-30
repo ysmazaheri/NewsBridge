@@ -6,9 +6,8 @@ import Sources from "../components/Article/Partials/Sources";
 import Bookmark from "../components/Article/Partials/Bookmark";
 import ShareButton from "../components/Article/Partials/ShareButton";
 import LikeButton from "../components/Article/Partials/LikeButton";
-import { mockSourceArticles } from "../mock-data/mockSourceArticles";
-import { mockComments } from "../mock-data/MockComments";
 import { mockArticles } from "../mock-data/MockArticles";
+
 const ArticlePage: React.FC = () => {
     const [hasLiked, setHasLiked] = useState(false);
 
@@ -56,7 +55,7 @@ const ArticlePage: React.FC = () => {
         <h1 className="text-2xl text-secondary font-light">{new Date(article.createdAt).toDateString()}</h1>
         <div className="flex items-center gap-2">
           {/* Sources */}
-          <Sources articles={mockSourceArticles} />
+          <Sources articles={article.sources} />
           {/* Like */}
           <LikeButton onClick={handleLike} hasLiked={hasLiked} />
           {/* Bookmark */}
@@ -108,7 +107,7 @@ const ArticlePage: React.FC = () => {
       {/* Comments Section */}
       <div className="my-5 w-full">
         <h2 className="text-xl font-semibold">Comments</h2>
-        <CommentSection comments={mockComments} />
+        <CommentSection comments={article.comments} />
       </div>
     </div>
   );

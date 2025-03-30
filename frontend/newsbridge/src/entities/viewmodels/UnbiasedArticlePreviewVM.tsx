@@ -4,16 +4,16 @@ export interface UnbiasedArticlePreviewViewModel {
   id: number;
   title: string;
   summary: string;
-  content: string;
   imageUrl?: string | null;
   topic?: string | null;
   likeCount: number;
+  commentCount: number;
   genre?: string | null;
   createdAt: string;
   daysAgo: string;
   isBookmarked: boolean;
-  biasRating: number;
-  commentCount: number;
+  isLiked: boolean;
+  audienceBiasRating: number;
 }
 
 const computeDaysAgo = (createdAt: string): string => {
@@ -30,14 +30,14 @@ export const mapUnbiasedArticlePreviewToViewModel = (
   id: article.unbiased_article_id,
   title: article.title,
   summary: article.summary,
-  content: article.content,
   imageUrl: article.image ? `/images/${article.image}` : null,
   topic: article.topic,
   likeCount: article.like_count,
   genre: article.genre,
   createdAt: article.created_at,
   daysAgo: computeDaysAgo(article.created_at),
-  isBookmarked: article.isBookedmark, // Assuming isBookedmark is a boolean indicating if the article is bookmarked
-  biasRating: article.audienceBiasRating,
-  commentCount: article.commentCount,
+  isBookmarked: false, //TODO: Determine this using a database call
+  isLiked: false, //TODO: Determine this using a database call
+  audienceBiasRating: article.audience_bias_rating,
+  commentCount: article.comment_count,
 });

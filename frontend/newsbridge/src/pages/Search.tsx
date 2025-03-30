@@ -8,7 +8,6 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       title: "This is a Title For a News Story",
       summary:
         "This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page.",
-      content: "Full content of the article",
       imageUrl: "/",
       topic: "US News",
       likeCount: 10,
@@ -16,7 +15,8 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       createdAt: "2025-10-10",
       daysAgo: "3 days ago",
       isBookmarked: true,
-      biasRating: 50,
+      isLiked: false,
+      audienceBiasRating: 50,
       commentCount: 13,
     },
     {
@@ -24,7 +24,6 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       title: "This is a Title For a News Story",
       summary:
         "This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page.",
-      content: "Full content of the article",
       imageUrl: "/",
       topic: "US News",
       likeCount: 10,
@@ -32,7 +31,8 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       createdAt: "2025-10-10",
       daysAgo: "3 days ago",
       isBookmarked: false,
-      biasRating: 50,
+      isLiked: false,
+      audienceBiasRating: 50,
       commentCount: 19,
     },
     {
@@ -40,7 +40,6 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       title: "This is a Title For a News Story",
       summary:
         "This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page.",
-      content: "Full content of the article",
       imageUrl: "/",
       topic: "US News",
       likeCount: 10,
@@ -48,7 +47,8 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       createdAt: "2025-10-10",
       daysAgo: "3 days ago",
       isBookmarked: true,
-      biasRating: 50,
+      isLiked: false,
+      audienceBiasRating: 50,
       commentCount: 22,
     },
     {
@@ -56,7 +56,6 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       title: "This is a Title For a News Story",
       summary:
         "This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page.",
-      content: "Full content of the article",
       imageUrl: "/",
       topic: "US News",
       likeCount: 10,
@@ -64,7 +63,8 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       createdAt: "2025-10-10",
       daysAgo: "3 days ago",
       isBookmarked: false,
-      biasRating: 50,
+      isLiked: false,
+      audienceBiasRating: 50,
       commentCount: 10,
     },
     {
@@ -72,7 +72,6 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       title: "This is a Title For a News Story",
       summary:
         "This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page. This is a summary of a news article that is being displayed on the home page.",
-      content: "Full content of the article",
       imageUrl: "/",
       topic: "US News",
       likeCount: 10,
@@ -80,7 +79,8 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
       createdAt: "2025-10-10",
       daysAgo: "3 days ago",
       isBookmarked: true,
-      biasRating: 50,
+      isLiked: false,
+      audienceBiasRating: 50,
       commentCount: 10,
     },
   ];
