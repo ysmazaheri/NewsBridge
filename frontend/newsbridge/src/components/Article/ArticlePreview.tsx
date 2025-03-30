@@ -12,6 +12,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   likeCount: initialLikeCount,
   biasRating,
   daysAgo,
+  isBookmarked,
   commentCount,
   id,
 }) => {
