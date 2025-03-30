@@ -84,15 +84,20 @@ const mockArticles: UnbiasedArticlePreviewViewModel[] = [
   },
 ];
 
-const Home = () => {
+const BookmarkedPage = () => {
   return (
     <div className="p-4">
       <div className="bg-gray-100 rounded-xl shadow-md p-4 mb-6 text-center">
-        <h2 className="text-3xl font-bold">Trending</h2>
+        <h2 className="text-3xl font-bold">Bookmarked Articles</h2>
       </div>
-      <ArticleList Articles={mockArticles} />
+      <ArticleList
+        Articles={mockArticles}
+        filter={(articles: UnbiasedArticlePreviewViewModel[]) =>
+          articles.filter((article) => article.isBookmarked)
+        }
+      />
     </div>
   );
 };
 
-export default Home;
+export default BookmarkedPage;
