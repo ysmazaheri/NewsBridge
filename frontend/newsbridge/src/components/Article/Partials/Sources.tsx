@@ -19,7 +19,7 @@ const Sources: React.FC<SourcesProps> = ({ articles }: SourcesProps) => {
         className="flex items-center gap-1 cursor-pointer"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        Sources:
+        <p className="text-gray-400 hidden sm:block">Sources:</p>
         <span className="flex -space-x-1.5">
           {articles.slice(0, maxVisibleSources).map((article, index) => (
             <span
