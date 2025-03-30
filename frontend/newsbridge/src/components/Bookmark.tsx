@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { PiBookmarksSimple, PiBookmarksSimpleDuotone } from "react-icons/pi";
 
-const Bookmark = ({ size = "text-3xl" }) => {
-  const [bookmarked, setBookmarked] = useState(false);
+const Bookmark = ({ size = "text-3xl", isBookmarked = false }) => {
+  const [bookmarked, setBookmarked] = useState(isBookmarked);
 
   const toggleBookmark = () => {
     setBookmarked(!bookmarked);

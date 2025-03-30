@@ -84,7 +84,7 @@ const Navbar = () => {
             borderColor="border-transparent"
             img="/bookmarkicon.svg"
             height="h-16"
-            handleClick={() => console.log("Bookmarks clicked")}
+            handleClick={() => navigate("/bookmark")}
           />
           <ProfileDropdown />
         </div>

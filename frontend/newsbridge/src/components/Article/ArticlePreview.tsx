@@ -84,7 +84,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           {/* Days Ago & Bookmark */}
           <div className="w-1/3 flex justify-end items-center gap-10">
             <span className="text-gray-400">{daysAgo}</span>
-            <Bookmark />
+            <Bookmark isBookmarked={isBookmarked} />
           </div>
         </div>
 
