@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../Form/FormElements';
 import { SortAsc, Newspaper, Clock, Gauge } from "lucide-react";
 import Dropdown from './Dropdown';
+import { biasRatingOptionsSearch, categoriesSearch, postedAtOptionsSearch, sortingOptionsSearch } from '../../utils/constants';
 
 const SearchComponent = () => {
-
     //State to store search query
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [inputText, setInputText] = useState<string>("");
@@ -28,53 +28,25 @@ const SearchComponent = () => {
     const postedAtDropdownRef = useRef<HTMLDivElement>(null);
     const biasRatingDropdownRef = useRef<HTMLDivElement>(null);
 
-    //Dropdown options for category, sorting, posted at and bias rating
-    const categories = [
-        { label: "US News", value: "usnews" },
-        { label: "World", value: "world" },
-        { label: "Business", value: "business" },
-        { label: "Politics", value: "politics" },
-        { label: "Other", value: "other" },
-      ];
-    const sortingOptions = [
-        { label: "Relevance", value: "relevance" },
-        { label: "Newest", value: "newest" },
-        { label: "Oldest", value: "oldest" },
-      ];
-      //(str is used to dynamically adjust text based on the selected option)
-      //For example, "posted in the last 7 days" vs "posted today"
-      const postedAtOptions = [ 
-           { label: "Today", value: "today", str:"posted"},
-           { label: "Yesterday", value: "yesterday", str:"posted"},
-           { label: "Last 7 days", value: "last7days", str: "posted in the"},
-           { label: "Last 30 days", value: "last30days", str: "posted in the"},
-           { label: "Anytime", value: "anytime", str: "posted"},
-      ]
-      const biasRatingOptions = [
-        { label: "Low", value: "low" },
-        { label: "Medium", value: "medium" },
-        { label: "High", value: "high" },
-      ]
-
-      //Event listener to close dropdowns when clicking outside
-      useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            //If click is outside of dropdown and dropdown is open, close dropdown
-            if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target as Node)) {
-                setIsCategoryDropdown(false);
-            }
-            if (sortDropdownRef.current && !sortDropdownRef.current.contains(event.target as Node)) {
-                setIsSortDropdown(false);
-            }
-            if (postedAtDropdownRef.current && !postedAtDropdownRef.current.contains(event.target as Node)) {
-                setIsPostedAtDropdown(false);
-            }
-            if (biasRatingDropdownRef.current && !biasRatingDropdownRef.current.contains(event.target as Node)) {
-                setIsBiasRatingDropdown(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+    //Event listener to close dropdowns when clicking outside
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+          //If click is outside of dropdown and dropdown is open, close dropdown
+          if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target as Node)) {
+              setIsCategoryDropdown(false);
+          }
+          if (sortDropdownRef.current && !sortDropdownRef.current.contains(event.target as Node)) {
+              setIsSortDropdown(false);
+          }
+          if (postedAtDropdownRef.current && !postedAtDropdownRef.current.contains(event.target as Node)) {
+              setIsPostedAtDropdown(false);
+          }
+          if (biasRatingDropdownRef.current && !biasRatingDropdownRef.current.contains(event.target as Node)) {
+              setIsBiasRatingDropdown(false);
+          }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     //Event handler for search input
@@ -119,6 +91,7 @@ const SearchComponent = () => {
         setSearchQuery(inputText);
         setResultCount(10);
     }
+    
     return (
         <div className="bg-white p-5 mt-5 w-full max-w-3xl mx-auto">
           <div className="flex flex-col space-y-4">
@@ -140,13 +113,13 @@ const SearchComponent = () => {
                 {searchQuery.trim() ? `"${searchQuery.trim()}"` : "All Articles"}
                 </span>
                 {selectedCategory &&
-                ` in ${categories.find((c) => c.value === selectedCategory)?.label}`}
+                ` in ${categoriesSearch.find((c) => c.value === selectedCategory)?.label}`}
                 
                 {/* Dynamically adjust "Posted At" based on the selected option */}
                 {selectedPostedAtOption && (
-                ` ${postedAtOptions
+                ` ${postedAtOptionsSearch
                     .find((p) => p.value === selectedPostedAtOption)
-                    ?.str} ${postedAtOptions
+                    ?.str} ${postedAtOptionsSearch
                     .find((p) => p.value === selectedPostedAtOption)?.label.toLowerCase()}`
                 )}
                 {selectedBiasRatingOption &&
@@ -160,7 +133,7 @@ const SearchComponent = () => {
             {/* Posted at Dropdown */}
               <Dropdown
               label="Posted At"
-              options={postedAtOptions}
+              options={postedAtOptionsSearch}
               selectedValue={selectedPostedAtOption}
               onSelect={handlePostedAtChange}
               isOpen={isPostedAtDropdownOpen}
@@ -171,7 +144,7 @@ const SearchComponent = () => {
             {/* Category Dropdown */}
             <Dropdown
               label="Category"
-              options={categories}
+              options={categoriesSearch}
               selectedValue={selectedCategory}
               onSelect={handleCategoryChange}
               isOpen={isCategoryDropdownOpen}
@@ -182,7 +155,7 @@ const SearchComponent = () => {
               {/* Bias Rating Dropdown */}
               <Dropdown
               label="Bias Rating"
-              options={biasRatingOptions}
+              options={biasRatingOptionsSearch}
               selectedValue={selectedBiasRatingOption}
               onSelect={handleBiasRatingChange}
               isOpen={isBiasRatingDropdownOpen}
@@ -193,7 +166,7 @@ const SearchComponent = () => {
               {/* Sort Dropdown */}
               <Dropdown
               label="Sort By"
-              options={sortingOptions}
+              options={sortingOptionsSearch}
               selectedValue={selectedSortOption}
               onSelect={handleSortChange}
               isOpen={isSortDropdownOpen}
