@@ -43,7 +43,7 @@ const ArticleList = (props: ArticleListProp) => {
             title={article.title}
             summary={article.summary}
             likeCount={article.likeCount}
-            audienceBiasRating={50}
+            audienceBiasRating={article.audienceBiasRating}
             daysAgo={article.daysAgo}
             isBookmarked={article.isBookmarked}
             isLiked={article.isLiked}

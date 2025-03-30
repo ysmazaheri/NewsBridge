@@ -43,7 +43,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
     isBookmarked: false,
     isLiked: false,
     userBiasRating: null,
-    audienceBiasRating: 70,
+    audienceBiasRating: 20,
   },
   {
     id: 3,
