@@ -13,8 +13,13 @@ import ResetPassword from "./pages/ResetPassword";
 import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import ArticlePage from "./pages/Article";
 
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home"]; // Add paths here that should have the Navbar
+import { mockArticle } from "./mock-data/MockArticle";
+import { mockComments } from "./mock-data/MockComments";
+import { mockSourceArticles } from "./mock-data/MockSourceArticles";
+
+const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/home", "/article", "/article"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
@@ -28,6 +33,13 @@ function App() {
         <Route path="/bias-scale-page" element={<BiasScalePage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/article" element={
+          <ArticlePage
+            article={mockArticle}
+            comments={mockComments}
+            sourceArticles={mockSourceArticles}
+          />
+        } />
         {/* Add more routes here as needed */}
       </Routes>
     </Router>
