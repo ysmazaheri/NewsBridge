@@ -10,7 +10,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   summary,
   imageUrl,
   likeCount: initialLikeCount,
-  biasRating,
+  audienceBiasRating,
   daysAgo,
   isBookmarked,
   commentCount,
@@ -79,7 +79,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
               className="flex items-center justify-center flex-shrink-0"
               style={{ width: "120px", height: "24px" }}
             >
-              <NewsBridgeBiasScale rating={biasRating} />
+              <NewsBridgeBiasScale rating={audienceBiasRating} />
             </div>
           </div>
 

@@ -39,14 +39,14 @@ const ArticleList = (props: ArticleListProp) => {
           <ArticlePreview
             key={article.id}
             id={article.id}
-            content="Full content of the article"
             createdAt="2025-10-10"
             title={article.title}
             summary={article.summary}
             likeCount={article.likeCount}
-            biasRating={50}
-            daysAgo={article.createdAt}
+            audienceBiasRating={article.audienceBiasRating}
+            daysAgo={article.daysAgo}
             isBookmarked={article.isBookmarked}
+            isLiked={article.isLiked}
             commentCount={article.commentCount}
             imageUrl={article.imageUrl || "/images/default.jpg"}
           />
