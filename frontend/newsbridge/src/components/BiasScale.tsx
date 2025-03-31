@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./FormElements";
+import { useUserInteractions } from "../context/UserInteractionContext";
 
 function getColor(rating: number): string {
   const red = Math.min(255, (rating / 100) * 255);
@@ -15,7 +16,6 @@ interface NewsBridgeBiasScaleProps {
 export const NewsBridgeBiasScale = (props: NewsBridgeBiasScaleProps) => {
   const { rating } = props;
   const circlePosition = `${rating}%`;
-
   const color = getColor(rating);
   // The circle's border color is dynamic based on its position
 
@@ -35,17 +35,21 @@ export const NewsBridgeBiasScale = (props: NewsBridgeBiasScaleProps) => {
 };
 
 interface UserBiasScaleProps {
-  initialRating: number;
-  onChange: (rating: number) => void;
+  articleId: number;
   // This onChange function will be used to send the rating to the backend
 }
 
 export const UserBiasScale = (props: UserBiasScaleProps) => {
-  const { initialRating, onChange } = props;
+  const { articleId } = props;
+  const { userBiasRatings, addBiasRating } = useUserInteractions();
+  const initialRating = userBiasRatings[props.articleId] || 50;
   const [dragging, setDragging] = useState<boolean>(false);
   const [isMutable, setIsMutable] = useState<boolean>(true);
   const [currentRating, setCurrentRating] = useState<number>(initialRating);
   const scaleRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setCurrentRating(initialRating);
+  }, [initialRating]);
 
   const color = getColor(currentRating);
 
@@ -66,6 +70,7 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
     const handleMouseMove = (e: MouseEvent) => {
       if (dragging) updateRating(e.clientX);
     };
+
     // Calls onChange function when dragging stops
     // To Do: Implement onChange function to update backend with new rating
     const handleMouseUp = () => {
@@ -91,7 +96,7 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
   // Updates the state of the toggle button
   const handleClick = () => {
     if (isMutable) {
-      onChange(currentRating);
+      addBiasRating(articleId, currentRating); 
     }
     setIsMutable(!isMutable);
   };

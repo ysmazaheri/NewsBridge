@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
 import CommentSection from "../components/Article/CommentSection/CommentSection";
@@ -9,9 +9,9 @@ import LikeButton from "../components/Article/Partials/LikeButton";
 import { mockArticles } from "../mock-data/MockArticles";
 
 const ArticlePage: React.FC = () => {
-    const [hasLiked, setHasLiked] = useState(false);
 
     const { id } = useParams<{ id: string }>();
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -26,21 +26,7 @@ const ArticlePage: React.FC = () => {
   if (!article) {
     return <div>Article not found</div>;
     }
-  const handleLike = () => {
-    if (hasLiked) {
-      // TODO: Database call to add/remove a "like" DTO
-      // TODO: Database call to increment/decrement the article like count
-      setHasLiked(false);
-    } else {
-      setHasLiked(true);
-    }
-  };
 
-  const handleBiasUpdate = (rating: number) => {
-    // TODO: Will be replaced with a call to the backend
-    // TODO: Will update the bias rating involving the current user + article, as well as the article's net bias rating
-    console.log(rating);
-  };
 
   return (
     <div className="my-3 flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden max-w-4xl">
@@ -57,9 +43,9 @@ const ArticlePage: React.FC = () => {
           {/* Sources */}
           <Sources articles={article.sources} />
           {/* Like */}
-          <LikeButton onClick={handleLike} hasLiked={hasLiked} />
+          <LikeButton articleId={parseInt(id)} />
           {/* Bookmark */}
-          <Bookmark size="text-3xl" />
+          <Bookmark size="text-3xl" articleId={parseInt(id)}/>
           {/* Share */}
           <ShareButton onClick={() => console.log("Shared!")} />
         </div>
@@ -100,14 +86,14 @@ const ArticlePage: React.FC = () => {
         {/* User Rating */}
         <div className="w-full">
           <h3 className="text-lg font-medium pb-3 text-center">Your Bias Rating</h3>
-          <UserBiasScale initialRating={50} onChange={handleBiasUpdate} />
+          <UserBiasScale articleId={article.id} />
         </div>
       </div>
 
       {/* Comments Section */}
       <div className="my-5 w-full">
         <h2 className="text-xl font-semibold">Comments</h2>
-        <CommentSection comments={article.comments} />
+        <CommentSection comments={article.comments} articleId={parseInt(id)} />
       </div>
     </div>
   );

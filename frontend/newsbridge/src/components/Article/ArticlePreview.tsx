@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Bookmark from "./Partials/Bookmark";
 import { NewsBridgeBiasScale } from "../BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
 import { useNavigate } from "react-router-dom";
+import { useUserInteractions } from "../../context/UserInteractionContext";
 const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   title,
   summary,
@@ -12,27 +13,19 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
   likeCount: initialLikeCount,
   audienceBiasRating,
   daysAgo,
-  isBookmarked,
   commentCount,
   id,
 }) => {
-  const [currentLikes, setCurrentLikes] = useState(initialLikeCount);
-  const [hasLiked, setHasLiked] = useState(false);
+  const { likedArticles } = useUserInteractions();
+
+  const hasLiked = likedArticles.has(id);
+  const currentLikes = hasLiked ? initialLikeCount + 1 : initialLikeCount;
   const navigate = useNavigate();
-  const handleLike = () => {
-    if (hasLiked) {
-      // TODO: Database call to add/remove a "like" DTO
-      // TODO: Database call to increment/decrement the article like count
-      setCurrentLikes(currentLikes - 1);
-      setHasLiked(false);
-    } else {
-      setCurrentLikes(currentLikes + 1);
-      setHasLiked(true);
-    }
-  };
+
   const handleClick = () => {
     navigate(`/article/${id}`);
   };
+
 
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">
@@ -86,7 +79,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           {/* Days Ago & Bookmark */}
           <div className="w-1/3 flex justify-end items-center gap-10">
             <span className="text-gray-400">{daysAgo}</span>
-            <Bookmark isBookmarked={isBookmarked} />
+            <Bookmark articleId={id} />
           </div>
         </div>
 
@@ -96,7 +89,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
         <div className="flex items-center text-sm text-gray-600 mt-2">
           {/* Like Button */}
           <div className="w-1/3">
-            <LikeButton onClick={handleLike} hasLiked={hasLiked} />
+            <LikeButton articleId={id} />
           </div>
           {/* Comment Count */}
           <div className="w-1/3 text-center">
