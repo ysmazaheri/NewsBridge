@@ -5,13 +5,13 @@ const Bookmark = ({ size = "text-3xl", articleId }: { size?: string; articleId: 
 
   const{ bookmarkedArticles, toggleBookmark } = useUserInteractions();
 
-  const hasBoookmarked = bookmarkedArticles.has(articleId);
+  const hasBookmarked = bookmarkedArticles.has(articleId);
 
   const handleBookmarkToggle = () => {
     toggleBookmark(articleId);
     // TODO: Replace with actual backend call to update the database. Will require some form of user id.
     setTimeout(() => {
-      console.log(`Bookmark status updated: ${!hasBoookmarked}`);
+      console.log(`Bookmark status updated: ${!hasBookmarked}`);
     }, 500);
   };
 
@@ -21,7 +21,7 @@ const Bookmark = ({ size = "text-3xl", articleId }: { size?: string; articleId: 
         onClick={handleBookmarkToggle}
         className={`transition-transform duration-300 ease-in-out active:scale-90 hover:opacity-80 cursor-pointer ${size}`}
       >
-        {hasBoookmarked ? <PiBookmarksSimpleDuotone /> : <PiBookmarksSimple />}
+        {hasBookmarked ? <PiBookmarksSimpleDuotone /> : <PiBookmarksSimple />}
       </button>
     </div>
   );

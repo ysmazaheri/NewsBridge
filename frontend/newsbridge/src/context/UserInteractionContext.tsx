@@ -53,7 +53,6 @@ export const UserInteractionProvider: React.FC<{ children: React.ReactNode }> = 
           } else {
             newLikes.add(articleId);
           }
-          localStorage.setItem("likedArticles", JSON.stringify([...newLikes]));
           return newLikes;
         });
       };
