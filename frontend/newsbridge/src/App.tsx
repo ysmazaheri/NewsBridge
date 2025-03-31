@@ -17,12 +17,13 @@ import Home from "./pages/Home";
 import ArticlePage from "./pages/Article";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
-
+import { UserInteractionProvider } from "./context/UserInteractionContext";
 const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/profile", "/bookmark", "/article/:id", "/search"]; // Add paths here that should have the Navbar
 
 function App() {
   return (
     <Router>
+      <UserInteractionProvider>
       <ConditionalNavbar />
       <Routes>
         <Route path="/form-elements-page" element={<FormElementsPage />} />
@@ -41,6 +42,7 @@ function App() {
         } />
         {/* Add more routes here as needed */}
       </Routes>
+      </UserInteractionProvider>
     </Router>
   );
 }

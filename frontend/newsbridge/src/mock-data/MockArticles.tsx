@@ -57,7 +57,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
     likeCount: 20,
     genre: "Science",
     createdAt: "2025-03-26T11:00:00Z",
-    isBookmarked: true,
+    isBookmarked: false,
     isLiked: true,
     userBiasRating: 50,
     audienceBiasRating: 60,

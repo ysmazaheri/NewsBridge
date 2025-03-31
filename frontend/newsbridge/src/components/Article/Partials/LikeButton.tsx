@@ -1,14 +1,17 @@
 import React from "react";
-
+import { useUserInteractions } from "../../../context/UserInteractionContext";
 interface LikeButtonProps {
-  hasLiked: boolean;
-  onClick?: () => void;
+  articleId: number;
 }
 
-const LikeButton: React.FC<LikeButtonProps> = ({ hasLiked, onClick }) => {
+const LikeButton: React.FC<LikeButtonProps> = ({ articleId }) => {
+  const { likedArticles, toggleLike } = useUserInteractions();
+  const hasLiked = likedArticles.has(articleId);
   return (
     <button
-      onClick={onClick}
+      onClick={() => {
+        toggleLike(articleId)
+      }}
       className="flex items-center gap-2 p-2 hover:bg-gray-300 rounded-xl transition-colors active:scale-95"
     >
       <img
