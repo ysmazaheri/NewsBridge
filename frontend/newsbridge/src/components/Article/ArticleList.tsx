@@ -12,10 +12,9 @@ interface ArticleListProp {
 
 const ArticleList = (props: ArticleListProp) => {
   const articles = props.filter ? props.filter(props.Articles) : props.Articles;
-  // Need to add functionality which reapplies filter everytime an article preview updates (bookmark clicked, liked, etc)
   const itemsPerPage = props.itemsPerPage ?? 3;
   const [curPage, setCurPage] = useState(1);
-  const totalPages = Math.ceil(articles.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
