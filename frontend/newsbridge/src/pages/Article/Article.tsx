@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import {
   NewsBridgeBiasScale,
   UserBiasScale,
-} from "../../components/Article/Partials/BiasScale";
+} from "../../components/Article/Subcomponents/BiasScale";
 import CommentSection from "../../components/Article/CommentSection/CommentSection";
-import Sources from "../../components/Article/Partials/Sources";
-import Bookmark from "../../components/Article/Partials/Bookmark";
-import ShareButton from "../../components/Article/Partials/ShareButton";
-import LikeButton from "../../components/Article/Partials/LikeButton";
+import Sources from "../../components/Article/Subcomponents/Sources";
+import Bookmark from "../../components/Article/Subcomponents/Bookmark";
+import ShareButton from "../../components/Article/Subcomponents/ShareButton";
+import LikeButton from "../../components/Article/Subcomponents/LikeButton";
 import { mockArticles } from "../../mock-data/MockArticles";
 
 const ArticlePage: React.FC = () => {

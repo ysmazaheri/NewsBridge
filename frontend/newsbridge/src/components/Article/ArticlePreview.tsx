@@ -1,8 +1,8 @@
 import React from "react";
-import Bookmark from "./Partials/Bookmark";
-import { NewsBridgeBiasScale } from "./Partials/BiasScale";
-import LikeButton from "./Partials/LikeButton";
-import ShareButton from "./Partials/ShareButton";
+import Bookmark from "./Subcomponents/Bookmark";
+import { NewsBridgeBiasScale } from "./Subcomponents/BiasScale";
+import LikeButton from "./Subcomponents/LikeButton";
+import ShareButton from "./Subcomponents/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
 import { useNavigate } from "react-router-dom";
 import { useUserInteractions } from "../../context/UserInteractionContext";

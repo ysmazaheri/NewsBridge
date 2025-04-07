@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, TextField } from "../../components/Form/FormElements";
-import Bookmark from "../../components/Article/Partials/Bookmark";
+import Bookmark from "../../components/Article/Subcomponents/Bookmark";
 import CommentDisplay from "../../components/Article/CommentSection/CommentDisplay";
 
 function FormElementsPage() {
