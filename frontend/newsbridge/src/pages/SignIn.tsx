@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationForm from "../components/Authentication/AuthenticationForm";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const SignInPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -49,8 +49,20 @@ const SignInPage: React.FC = () => {
           header="Welcome Back 👋"
           description="Welcome to **NewsBridge**, where diverse perspectives converge to deliver balanced, transparent news for an informed citizenry."
           fields={[
-            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange, showIcon: false },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, showIcon: true },
+            {
+              label: "Email",
+              type: "email",
+              value: formData.email,
+              onChange: handleEmailChange,
+              showIcon: false,
+            },
+            {
+              label: "Password",
+              type: "password",
+              value: formData.password,
+              onChange: handlePasswordChange,
+              showIcon: true,
+            },
           ]}
           buttonText="Sign In"
           footerText="Don't have an account?"

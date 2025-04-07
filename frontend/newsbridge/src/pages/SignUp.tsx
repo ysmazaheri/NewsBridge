@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import AuthenticationForm from "../components/Authentication/AuthenticationForm";
-import { validatePassword, getPasswordValidation, checkPasswordMatch } from "../utils/validation";
+import {
+  validatePassword,
+  getPasswordValidation,
+  checkPasswordMatch,
+} from "../utils/validation";
 const SignUpPage: React.FC = () => {
-  const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState({
@@ -29,7 +37,9 @@ const SignUpPage: React.FC = () => {
     setDoPasswordsMatch(checkPasswordMatch(password, formData.confirmPassword));
   };
 
-  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const confirmPassword = e.target.value;
     setFormData({ ...formData, confirmPassword });
     setDoPasswordsMatch(checkPasswordMatch(formData.password, confirmPassword));
@@ -54,7 +64,9 @@ const SignUpPage: React.FC = () => {
       return;
     }
     if (!validatePassword(formData.password)) {
-      toast.error("Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters");
+      toast.error(
+        "Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters"
+      );
       return;
     }
     // Handle form submission
@@ -72,9 +84,29 @@ const SignUpPage: React.FC = () => {
           header="Sign Up"
           description="Sign up now to enjoy a community of informed readers and enjoy balanced, transparent news from every side."
           fields={[
-            { label: "Email", type: "email", value: formData.email, onChange: handleEmailChange, showIcon: false },
-            { label: "Password", type: "password", value: formData.password, onChange: handlePasswordChange, isValid: isPasswordValid, showIcon: true },
-            { label: "Confirm Password", type: "password", value: formData.confirmPassword, onChange: handleConfirmPasswordChange, isValid: doPasswordsMatch, showIcon: true },
+            {
+              label: "Email",
+              type: "email",
+              value: formData.email,
+              onChange: handleEmailChange,
+              showIcon: false,
+            },
+            {
+              label: "Password",
+              type: "password",
+              value: formData.password,
+              onChange: handlePasswordChange,
+              isValid: isPasswordValid,
+              showIcon: true,
+            },
+            {
+              label: "Confirm Password",
+              type: "password",
+              value: formData.confirmPassword,
+              onChange: handleConfirmPasswordChange,
+              isValid: doPasswordsMatch,
+              showIcon: true,
+            },
           ]}
           passwordValidation={passwordValidation}
           buttonText="Sign Up"

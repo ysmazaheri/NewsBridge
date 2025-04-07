@@ -96,7 +96,7 @@ export const UserBiasScale = (props: UserBiasScaleProps) => {
   // Updates the state of the toggle button
   const handleClick = () => {
     if (isMutable) {
-      addBiasRating(articleId, currentRating); 
+      addBiasRating(articleId, currentRating);
     }
     setIsMutable(!isMutable);
   };

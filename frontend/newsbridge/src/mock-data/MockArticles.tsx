@@ -8,7 +8,8 @@ export const mockArticles: UnbiasedArticleViewModel[] = [
     title: "Sample Article Title",
     sources: mockSourceArticles[0],
     comments: mockComments[0],
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae nunc ut arcu auctor efficitur. Mauris feugiat eros id turpis vestibulum, id vehicula purus scelerisque. Nullam at felis vel lectus venenatis vehicula. Integer fermentum sapien nec lacus ultricies, nec suscipit turpis aliquet. Sed dictum mauris non neque aliquet, ac feugiat lacus sollicitudin. Ut ac magna a justo dictum cursus eget a est. Donec id tellus sit amet nulla tincidunt accumsan vel nec eros.",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae nunc ut arcu auctor efficitur. Mauris feugiat eros id turpis vestibulum, id vehicula purus scelerisque. Nullam at felis vel lectus venenatis vehicula. Integer fermentum sapien nec lacus ultricies, nec suscipit turpis aliquet. Sed dictum mauris non neque aliquet, ac feugiat lacus sollicitudin. Ut ac magna a justo dictum cursus eget a est. Donec id tellus sit amet nulla tincidunt accumsan vel nec eros.",
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae nunc ut arcu auctor efficitur. Mauris feugiat eros id turpis vestibulum, id vehicula purus scelerisque. Nullam at felis vel lectus venenatis vehicula. Integer fermentum sapien nec lacus ultricies, nec suscipit turpis aliquet.
 
 Curabitur ultricies arcu id lectus consectetur, id luctus libero pellentesque. Donec aliquet magna et urna tempor, nec tristique sem viverra. Nam lacinia turpis et dui tincidunt fermentum. Pellentesque ac turpis non enim auctor dictum non non elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sed lectus at elit tincidunt dictum. Duis hendrerit ipsum vel vehicula condimentum.

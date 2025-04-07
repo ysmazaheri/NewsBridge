@@ -1,9 +1,14 @@
 import { useUserInteractions } from "../../../context/UserInteractionContext";
 import { PiBookmarksSimple, PiBookmarksSimpleDuotone } from "react-icons/pi";
 
-const Bookmark = ({ size = "text-3xl", articleId }: { size?: string; articleId: number }) => {
-
-  const{ bookmarkedArticles, toggleBookmark } = useUserInteractions();
+const Bookmark = ({
+  size = "text-3xl",
+  articleId,
+}: {
+  size?: string;
+  articleId: number;
+}) => {
+  const { bookmarkedArticles, toggleBookmark } = useUserInteractions();
 
   const hasBookmarked = bookmarkedArticles.has(articleId);
 

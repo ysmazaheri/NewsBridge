@@ -1,6 +1,7 @@
 import React from "react";
 
-interface NavbarButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface NavbarButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value: string;
   width?: number;
   height?: string;
@@ -43,14 +44,14 @@ export const NavbarButton = (props: NavbarButtonProps) => {
       >
         {img && (
           <div className="w-10 h-10 flex-shrink-0">
-            <img 
-              src={img} 
-              alt="button icon" 
-              className="w-full h-full object-contain" 
+            <img
+              src={img}
+              alt="button icon"
+              className="w-full h-full object-contain"
             />
           </div>
         )}
-        <span className="max-[890px]:hidden">{value}</span> 
+        <span className="max-[890px]:hidden">{value}</span>
       </button>
     </div>
   );

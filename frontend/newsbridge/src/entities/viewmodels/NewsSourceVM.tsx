@@ -7,7 +7,9 @@ export interface NewsSourceViewModel {
   country?: string | null;
 }
 
-export const mapNewsSourceToViewModel = (source: NewsSource): NewsSourceViewModel => ({
+export const mapNewsSourceToViewModel = (
+  source: NewsSource
+): NewsSourceViewModel => ({
   id: source.source_id,
   name: source.name,
   url: source.url,

@@ -20,7 +20,9 @@ export interface UnbiasedArticleViewModel {
   audienceBiasRating: number;
 }
 
-export const mapUnbiasedArticleToViewModel = (article: UnbiasedArticle): UnbiasedArticleViewModel => ({
+export const mapUnbiasedArticleToViewModel = (
+  article: UnbiasedArticle
+): UnbiasedArticleViewModel => ({
   id: article.unbiased_article_id,
   title: article.title,
   sources: [], //TODO: Get the sources using a database call

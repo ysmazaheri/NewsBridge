@@ -30,7 +30,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   handleClick: () => void;
 }
 
-interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   defaultValue: string;
   value?: string;
   bgColor?: string;

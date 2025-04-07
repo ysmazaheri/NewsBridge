@@ -1,13 +1,20 @@
 import React from "react";
 import { TextField, Button } from "../FormElements";
-import ReactMarkdown from 'react-markdown';
-import { Components } from 'react-markdown';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import ReactMarkdown from "react-markdown";
+import { Components } from "react-markdown";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 interface AuthenticationFormProps {
   header: string;
   description: string;
-  fields: { label: string; type: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; isValid?: boolean, showIcon: boolean }[];
+  fields: {
+    label: string;
+    type: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isValid?: boolean;
+    showIcon: boolean;
+  }[];
   buttonText: string;
   footerText: string;
   footerLinkText: string;
@@ -41,22 +48,27 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
   onSecondFooterLinkClick,
 }) => {
   const components: Components = {
-    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="text-gray-600 mb-8 text-lg text-justify p-2" {...props} />,
+    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+      <p className="text-gray-600 mb-8 text-lg text-justify p-2" {...props} />
+    ),
   };
 
   const validationRules = [
-  { key: 'length', label: 'At least 8 characters' },
-  { key: 'hasUpperCase', label: 'At least one uppercase letter' },
-  { key: 'hasLowerCase', label: 'At least one lowercase letter' },
-  { key: 'hasSpecialChar', label: 'At least one special character' },
-  ]
+    { key: "length", label: "At least 8 characters" },
+    { key: "hasUpperCase", label: "At least one uppercase letter" },
+    { key: "hasLowerCase", label: "At least one lowercase letter" },
+    { key: "hasSpecialChar", label: "At least one special character" },
+  ];
 
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-white min-h-screen mx-auto overflow-hidden w-150">
       <h1 className="text-6xl font-bold mb-6">{header}</h1>
       <ReactMarkdown components={components}>{description}</ReactMarkdown>
       {fields.map((field, index) => (
-        <div key={index} className="mb-4 w-full flex justify-center items-center relative">
+        <div
+          key={index}
+          className="mb-4 w-full flex justify-center items-center relative"
+        >
           <TextField
             defaultValue={field.label}
             value={field.value}
@@ -65,7 +77,11 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
             showPasswordIcon={field.showIcon}
           />
           {field.isValid !== undefined && (
-            <span className={`absolute right-16 ${field.isValid ? 'text-green-500' : 'text-red-500'}`}>
+            <span
+              className={`absolute right-16 ${
+                field.isValid ? "text-green-500" : "text-red-500"
+              }`}
+            >
               {field.isValid ? <FaCheckCircle /> : <FaTimesCircle />}
             </span>
           )}
@@ -75,8 +91,20 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
         <div className="mt-2 text-sm text-gray-600 py-4">
           {validationRules.map(({ key, label }) => (
             <div key={key} className="flex items-center mt-1">
-              <span style={{ color: passwordValidation[key as keyof typeof passwordValidation] ? 'green' : 'red' }}>
-                {passwordValidation[key as keyof typeof passwordValidation] ? <FaCheckCircle /> : <FaTimesCircle />}
+              <span
+                style={{
+                  color: passwordValidation[
+                    key as keyof typeof passwordValidation
+                  ]
+                    ? "green"
+                    : "red",
+                }}
+              >
+                {passwordValidation[key as keyof typeof passwordValidation] ? (
+                  <FaCheckCircle />
+                ) : (
+                  <FaTimesCircle />
+                )}
               </span>
               <span className="ml-2">{label}</span>
             </div>

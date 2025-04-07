@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface CommentDisplayProps {
   username: string;
@@ -6,9 +6,13 @@ interface CommentDisplayProps {
   userImage: string;
 }
 
-const CommentDisplay = ({ username, userComment, userImage }: CommentDisplayProps) => {
+const CommentDisplay = ({
+  username,
+  userComment,
+  userImage,
+}: CommentDisplayProps) => {
   const [expanded, setExpanded] = useState(false);
-  const THRESHOLD = 200; 
+  const THRESHOLD = 200;
   const isLongComment = userComment.length > THRESHOLD;
 
   return (
@@ -20,21 +24,21 @@ const CommentDisplay = ({ username, userComment, userImage }: CommentDisplayProp
       />
       <div className="flex flex-col">
         <h4 className="text-sm font-semibold text-gray-800 mb-1">{username}</h4>
-        
+
         <div
           className={`text-sm text-gray-600 leading-normal transition-all duration-300
-            ${expanded ? 'max-h-none' : 'overflow-hidden max-h-[4.5rem]'}`}
-          style={{ wordBreak: 'break-word' }}
+            ${expanded ? "max-h-none" : "overflow-hidden max-h-[4.5rem]"}`}
+          style={{ wordBreak: "break-word" }}
         >
           {userComment}
         </div>
-        
+
         {isLongComment && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="mt-1 text-sm text-blue-600 underline cursor-pointer"
           >
-            {expanded ? 'Show Less' : 'Read More'}
+            {expanded ? "Show Less" : "Read More"}
           </button>
         )}
       </div>

@@ -4,17 +4,18 @@ import CommentDisplay from "./CommentDisplay";
 import { CommentViewModel } from "../../../entities/viewmodels/CommentVM";
 import { useUserInteractions } from "../../../context/UserInteractionContext";
 interface CommentSectionProps {
-  articleId: number
+  articleId: number;
   comments: CommentViewModel[];
 }
 
-function CommentSection({ articleId, comments: initialComments }: CommentSectionProps) {
+function CommentSection({
+  articleId,
+  comments: initialComments,
+}: CommentSectionProps) {
   const { userComments, addComment } = useUserInteractions();
   const [text, setText] = useState("");
 
   const allComments = initialComments.concat(userComments[articleId] || []);
-
-
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
@@ -36,7 +37,7 @@ function CommentSection({ articleId, comments: initialComments }: CommentSection
         },
         content: value,
         createdAt: new Date().toISOString(),
-      }      
+      };
       addComment(articleId, newComment);
       setText("");
       // TODO: Add new comment to database

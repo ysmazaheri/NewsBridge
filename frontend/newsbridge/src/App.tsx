@@ -18,30 +18,34 @@ import ArticlePage from "./pages/Article";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import Search from "./pages/Search";
 import { UserInteractionProvider } from "./context/UserInteractionContext";
-const navbarRoutes = ["/", "/form-elements-page", "/bias-scale-page", "/profile", "/bookmark", "/article/:id", "/search"]; // Add paths here that should have the Navbar
+const navbarRoutes = [
+  "/",
+  "/form-elements-page",
+  "/bias-scale-page",
+  "/profile",
+  "/bookmark",
+  "/article/:id",
+  "/search",
+]; // Add paths here that should have the Navbar
 
 function App() {
   return (
     <Router>
       <UserInteractionProvider>
-      <ConditionalNavbar />
-      <Routes>
-        <Route path="/form-elements-page" element={<FormElementsPage />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/bias-scale-page" element={<BiasScalePage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/bookmark" element={<BookmarkedPage />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/article/:id" element={
-          <ArticlePage
-          
-          />
-        } />
-        {/* Add more routes here as needed */}
-      </Routes>
+        <ConditionalNavbar />
+        <Routes>
+          <Route path="/form-elements-page" element={<FormElementsPage />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/bias-scale-page" element={<BiasScalePage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/bookmark" element={<BookmarkedPage />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
+          {/* Add more routes here as needed */}
+        </Routes>
       </UserInteractionProvider>
     </Router>
   );
@@ -51,7 +55,7 @@ function ConditionalNavbar() {
   const location = useLocation();
   const showNavbar = navbarRoutes.some((route) =>
     matchPath(route, location.pathname)
-  )
+  );
 
   return showNavbar ? <Navbar /> : null;
 }

@@ -26,7 +26,6 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
     navigate(`/article/${id}`);
   };
 
-
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-xl font-sans">
       {" "}
@@ -98,7 +97,7 @@ const ArticlePreview: React.FC<UnbiasedArticlePreviewViewModel> = ({
           {/* Share Button */}
           <div className="w-1/3 flex justify-end">
             {/* TODO: Actually implement a share link */}
-            <ShareButton onClick={() => console.log("Shared!")} /> 
+            <ShareButton onClick={() => console.log("Shared!")} />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ articleId }) => {
   return (
     <button
       onClick={() => {
-        toggleLike(articleId)
+        toggleLike(articleId);
       }}
       className="flex items-center gap-2 p-2 hover:bg-gray-300 rounded-xl transition-colors active:scale-95"
     >
@@ -20,7 +20,9 @@ const LikeButton: React.FC<LikeButtonProps> = ({ articleId }) => {
         className="w-5 h-5"
       />
       <span
-        className={`text-sm ${hasLiked ? "text-[#484EE7]" : "text-gray-400"} hidden sm:inline`}
+        className={`text-sm ${
+          hasLiked ? "text-[#484EE7]" : "text-gray-400"
+        } hidden sm:inline`}
       >
         Like
       </span>
