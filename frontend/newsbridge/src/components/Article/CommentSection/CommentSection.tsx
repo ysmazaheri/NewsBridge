@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextArea } from "../../../components/FormElements";
+import { TextArea } from "../../Form/FormElements";
 import CommentDisplay from "./CommentDisplay";
 import { CommentViewModel } from "../../../entities/viewmodels/CommentVM";
 import { useUserInteractions } from "../../../context/UserInteractionContext";

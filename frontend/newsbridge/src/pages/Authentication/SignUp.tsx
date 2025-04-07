@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthenticationForm from "../components/Authentication/AuthenticationForm";
+import AuthenticationForm from "../../components/Authentication/AuthenticationForm";
 import {
   validatePassword,
   getPasswordValidation,
   checkPasswordMatch,
-} from "../utils/validation";
+} from "../../utils/validation";
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",

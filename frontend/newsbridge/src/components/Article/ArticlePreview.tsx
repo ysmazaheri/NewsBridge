@@ -1,6 +1,6 @@
 import React from "react";
 import Bookmark from "./Partials/Bookmark";
-import { NewsBridgeBiasScale } from "../BiasScale";
+import { NewsBridgeBiasScale } from "./Partials/BiasScale";
 import LikeButton from "./Partials/LikeButton";
 import ShareButton from "./Partials/ShareButton";
 import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";

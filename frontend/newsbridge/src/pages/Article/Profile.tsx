@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
-import { TextField, Button } from "../components/FormElements";
+import { TextField, Button } from "../../components/Form/FormElements";
 import { ToastContainer, toast } from "react-toastify";
-import DeleteAccount from "../components/DeleteAccount";
-import { User } from "../entities/dtos/UserDTO";
+import DeleteAccount from "../../components/Profile/DeleteAccount";
+import { User } from "../../entities/dtos/UserDTO";
 import {
   UserViewModel,
   mapUserToViewModel,
-} from "../entities/viewmodels/UserVM";
+} from "../../entities/viewmodels/UserVM";
 
 // Mimics data we would retrieve from some API call and/or send to API
 const mockData: User = {

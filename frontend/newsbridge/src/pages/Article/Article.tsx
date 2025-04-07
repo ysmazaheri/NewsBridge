@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { NewsBridgeBiasScale, UserBiasScale } from "../components/BiasScale";
-import CommentSection from "../components/Article/CommentSection/CommentSection";
-import Sources from "../components/Article/Partials/Sources";
-import Bookmark from "../components/Article/Partials/Bookmark";
-import ShareButton from "../components/Article/Partials/ShareButton";
-import LikeButton from "../components/Article/Partials/LikeButton";
-import { mockArticles } from "../mock-data/MockArticles";
+import {
+  NewsBridgeBiasScale,
+  UserBiasScale,
+} from "../../components/Article/Partials/BiasScale";
+import CommentSection from "../../components/Article/CommentSection/CommentSection";
+import Sources from "../../components/Article/Partials/Sources";
+import Bookmark from "../../components/Article/Partials/Bookmark";
+import ShareButton from "../../components/Article/Partials/ShareButton";
+import LikeButton from "../../components/Article/Partials/LikeButton";
+import { mockArticles } from "../../mock-data/MockArticles";
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

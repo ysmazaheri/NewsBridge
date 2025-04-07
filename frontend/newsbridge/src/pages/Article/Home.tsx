@@ -1,6 +1,6 @@
-import { UnbiasedArticlePreviewViewModel } from "../entities/viewmodels/UnbiasedArticlePreviewVM";
-import ArticleList from "../components/Article/ArticleList";
-import { mockArticlePreviews } from "../mock-data/MockArticlePreviews";
+import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
+import ArticleList from "../../components/Article/ArticleList";
+import { mockArticlePreviews } from "../../mock-data/MockArticlePreviews";
 
 const mockArticles: UnbiasedArticlePreviewViewModel[] = mockArticlePreviews;
 

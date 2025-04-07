@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Button } from "./FormElements";
-import { useUserInteractions } from "../context/UserInteractionContext";
+import { Button } from "../../Form/FormElements";
+import { useUserInteractions } from "../../../context/UserInteractionContext";
 
 function getColor(rating: number): string {
   const red = Math.min(255, (rating / 100) * 255);

@@ -8,15 +8,15 @@ import {
 import "./App.css";
 import Navbar from "./components/NavigationBar/Navbar";
 import FormElementsPage from "./pages/component_testing_pages/FormElementsPage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import ResetPassword from "./pages/ResetPassword";
+import SignIn from "./pages/Authentication/SignIn";
+import SignUp from "./pages/Authentication/SignUp";
+import ResetPassword from "./pages/Authentication/ResetPassword";
 import BiasScalePage from "./pages/component_testing_pages/BiasScalePage";
-import Profile from "./pages/Profile";
-import Home from "./pages/Home";
-import ArticlePage from "./pages/Article";
-import BookmarkedPage from "./pages/BookmarkedPage";
-import Search from "./pages/Search";
+import Profile from "./pages/Article/Profile";
+import Home from "./pages/Article/Home";
+import ArticlePage from "./pages/Article/Article";
+import BookmarkedPage from "./pages/Article/BookmarkedPage";
+import Search from "./pages/Article/Search";
 import { UserInteractionProvider } from "./context/UserInteractionContext";
 const navbarRoutes = [
   "/",

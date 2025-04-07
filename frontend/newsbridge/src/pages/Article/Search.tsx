@@ -1,7 +1,7 @@
-import ArticleList from "../components/Article/ArticleList";
-import SearchComponent from "../components/Search/SearchComponent";
-import { UnbiasedArticlePreviewViewModel } from "../entities/viewmodels/UnbiasedArticlePreviewVM";
-import { mockArticlePreviews } from "../mock-data/MockArticlePreviews";
+import ArticleList from "../../components/Article/ArticleList";
+import SearchComponent from "../../components/Search/SearchComponent";
+import { UnbiasedArticlePreviewViewModel } from "../../entities/viewmodels/UnbiasedArticlePreviewVM";
+import { mockArticlePreviews } from "../../mock-data/MockArticlePreviews";
 
 const mockArticles: UnbiasedArticlePreviewViewModel[] = mockArticlePreviews;
 

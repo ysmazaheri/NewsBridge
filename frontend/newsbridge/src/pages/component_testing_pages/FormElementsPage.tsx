@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, TextField } from "../../components/FormElements";
+import { Button, TextField } from "../../components/Form/FormElements";
 import Bookmark from "../../components/Article/Partials/Bookmark";
 import CommentDisplay from "../../components/Article/CommentSection/CommentDisplay";
 
@@ -17,7 +17,6 @@ function FormElementsPage() {
   const handleButtonClickComment = (value: string) => {
     console.log("Comment submitted:", value);
   };
-
 
   return (
     <div className="flex flex-col p-4 justify-between gap-5">
