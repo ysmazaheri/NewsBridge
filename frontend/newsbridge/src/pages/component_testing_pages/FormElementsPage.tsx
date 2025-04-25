@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, TextField } from "../../components/FormElements";
-import Bookmark from "../../components/Article/Partials/Bookmark";
 import CommentDisplay from "../../components/Article/CommentSection/CommentDisplay";
 
 function FormElementsPage() {
@@ -109,10 +108,7 @@ function FormElementsPage() {
         sample comment This is a sample comment "
         userImage="/person.svg"
       />
-      <Bookmark size="text-lg" />
-      <Bookmark size="text-2xl" />
-      <Bookmark></Bookmark>
-      <Bookmark size="text-5xl" />
+
     </div>
   );
 }
