@@ -1,6 +1,6 @@
 import { UnbiasedArticleViewModel } from "../entities/viewmodels/UnbiasedArticleVM";
 import { mockComments } from "./MockComments";
-import { mockSourceArticles } from "./MockSourceArticles";
+import { mockSourceArticles } from "./mockSourceArticles";
 
 export const mockArticles: UnbiasedArticleViewModel[] = [
   {
