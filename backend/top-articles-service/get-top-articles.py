@@ -35,7 +35,7 @@ def fetch_articles_by_source(source):
     all_articles = []
     params = {
         "apiKey": newsApiKey,
-        "sources": ",".join(source),
+        "sources": source,
         "pageSize": topN,
     }
     res = requests.get(newsApiUrl, params=params)

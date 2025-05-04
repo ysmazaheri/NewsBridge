@@ -7,38 +7,16 @@ import requests
 import os
 
 app = FastAPI(title="Web-Scraping Service")
-
-# URL of the Top-Articles Service (override via env if needed)
 TOP_ARTICLES_URL = os.getenv("TOP_ARTICLES_URL", "http://localhost:8000")
 
-
-# Metadata schema coming straight from Top-Articles Service
-class ArticleMeta(BaseModel):
-    headline: Optional[str]
-    url:      HttpUrl
-    topic:    Optional[str]
-    source:   Optional[str]
-
-
-# Enriched schema (meta + fetched content)
-class ArticleEnriched(ArticleMeta):
-    title:     Optional[str]
-    content:   Optional[str]
-    author:    Optional[str]
-    published: Optional[str]
-    error:     Optional[str]
-
-
+# clean text (remove by lines, image captions, collapse blank lines)
 def clean_text(text: str) -> str:
-    # remove bylines
     text = re.sub(r'(?m)^By[\s\w\.,-]+\n', '', text)
-    # remove image captions
     text = re.sub(r'\[.*?\]\n', '', text)
-    # collapse blank lines
     text = re.sub(r'\n\s*\n', '\n\n', text)
     return text.strip()
 
-
+# fetch data content from url
 def fetch_url_data(url: str) -> Dict[str, Any]:
     try:
         article = Article(url)
@@ -63,8 +41,8 @@ def fetch_url_data(url: str) -> Dict[str, Any]:
 
 @app.post(
     "/fetch-content",
-    response_model=Dict[str, List[ArticleEnriched]]
 )
+# iterate to fetch content for all urls
 def fetch_content(grouped: Dict[str, List[Dict[str, Any]]]):
     """
     Accepts grouped metadata:
@@ -86,13 +64,9 @@ def fetch_content(grouped: Dict[str, List[Dict[str, Any]]]):
 
 @app.get(
     "/enrich-top-articles",
-    response_model=Dict[str, List[ArticleEnriched]]
 )
+# enrich top articles
 def enrich_top_articles():
-    """
-    1) Fetches grouped metadata from Top-Articles Service
-    2) Passes it to fetch_content() for enrichment
-    """
     try:
         resp = requests.get(f"{TOP_ARTICLES_URL}/top-articles", timeout=10)
         resp.raise_for_status()
