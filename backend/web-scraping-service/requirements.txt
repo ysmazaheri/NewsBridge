@@ -3,3 +3,4 @@ uvicorn
 newspaper3k
 requests
 python-dotenv
+lxml_html_clean

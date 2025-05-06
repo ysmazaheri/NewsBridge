@@ -1,70 +1,56 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, HttpUrl
-from typing import List, Optional, Dict, Any
 from newspaper import Article
 import re
 import requests
 import os
 
-app = FastAPI(title="Web-Scraping Service")
+app = FastAPI()
 TOP_ARTICLES_URL = os.getenv("TOP_ARTICLES_URL", "http://localhost:8000")
 
 # clean text (remove by lines, image captions, collapse blank lines)
-def clean_text(text: str) -> str:
+def clean_text(text):
     text = re.sub(r'(?m)^By[\s\w\.,-]+\n', '', text)
     text = re.sub(r'\[.*?\]\n', '', text)
     text = re.sub(r'\n\s*\n', '\n\n', text)
     return text.strip()
 
 # fetch data content from url
-def fetch_url_data(url: str) -> Dict[str, Any]:
+def fetch_url_data(url):
     try:
         article = Article(url)
         article.download()
         article.parse()
         return {
-            "title":     article.title,
-            "content":   clean_text(article.text),
-            "author":    ', '.join(article.authors) or None,
+            "title": article.title,
+            "content": clean_text(article.text),
+            "author": ', '.join(article.authors) or None,
             "published": article.publish_date.isoformat() if article.publish_date else None,
-            "error":     None
+            "error": None
         }
     except Exception as e:
         return {
-            "title":     None,
-            "content":   None,
-            "author":    None,
+            "title": None,
+            "content": None,
+            "author": None,
             "published": None,
-            "error":     str(e)
+            "error": str(e)
         }
 
-
-@app.post(
-    "/fetch-content",
-)
 # iterate to fetch content for all urls
-def fetch_content(grouped: Dict[str, List[Dict[str, Any]]]):
-    """
-    Accepts grouped metadata:
-      { "left": [{headline,url,topic,source},…],
-        "right":[…] }
-    Returns same grouping with each entry enriched.
-    """
-    enriched: Dict[str, List[Dict[str, Any]]] = {}
+def fetch_content(grouped):
+    enriched = {}
     for label, metas in grouped.items():
         entries = []
         for meta in metas:
             url = meta.get("url")
             data = fetch_url_data(str(url))
-            merged = {**meta, **data}
-            entries.append(merged)
+            entries.append({**meta, **data})
         enriched[label] = entries
     return enriched
 
 
-@app.get(
-    "/enrich-top-articles",
-)
+@app.get("/enrich-top-articles")
 # enrich top articles
 def enrich_top_articles():
     try:
