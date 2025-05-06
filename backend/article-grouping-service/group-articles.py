@@ -13,7 +13,9 @@ def fetch_articles() -> List[Dict]:
     response = requests.get(TOP_ARTICLES_SERVICE_URL)
     if response.status_code == 200:
         data = response.json()
-        return data.get("left", []) + data.get("right", [])
+        left_articles = [{"leaning": "left", **article} for article in data.get("left", [])]
+        right_articles = [{"leaning": "right", **article} for article in data.get("right", [])]
+        return left_articles + right_articles
     else:
         print(f"Error fetching articles: {response.status_code}")
         return []
