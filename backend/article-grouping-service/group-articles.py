@@ -31,7 +31,7 @@ def evaluate_similarity(articles: List[Dict]) -> List[List[float]]:
     return cosine_similarity(tfidf_matrix)
 
 # Group articles based on similarity
-def group_articles(articles: List[Dict], similarity_threshold: float = 0.5) -> List[List[Dict]]:
+def group_articles(articles: List[Dict], similarity_threshold: float = 0.2) -> List[List[Dict]]:
     if not articles:
         return []
 
