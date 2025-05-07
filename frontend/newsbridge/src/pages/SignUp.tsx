@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import AuthenticationForm from "../components/Authentication/AuthenticationForm";
 import { validatePassword, getPasswordValidation, checkPasswordMatch } from "../utils/validation";
+
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
   const [isPasswordValid, setIsPasswordValid] = useState(false);
@@ -35,18 +36,10 @@ const SignUpPage: React.FC = () => {
     setDoPasswordsMatch(checkPasswordMatch(formData.password, confirmPassword));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email && !formData.password && !formData.confirmPassword) {
+    if (!formData.email || !formData.password || !formData.confirmPassword) {
       toast.error("Please fill out all fields");
-      return;
-    }
-    if (!formData.email) {
-      toast.error("Email is required");
-      return;
-    }
-    if (!formData.password || !formData.confirmPassword) {
-      toast.error("Password and password confirmation is required");
       return;
     }
     if (formData.password !== formData.confirmPassword) {
@@ -57,8 +50,28 @@ const SignUpPage: React.FC = () => {
       toast.error("Password must be at least 8 characters long, contain at least one special character, and have a mix of uppercase and lowercase letters");
       return;
     }
-    // Handle form submission
-    console.log("Submitted data:", formData);
+
+    // Make API request to the API Gateway
+    try {
+      const response = await fetch("http://localhost:4000/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: formData.email, password: formData.password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Sign up successful");
+        navigate("/sign-in"); // Navigate to SignIn page
+      } else {
+        toast.error(data.error || "Sign up failed");
+      }
+    } catch  {
+      toast.error("Error during sign up: ");
+    }
   };
 
   const handleFooterLinkClick = () => {

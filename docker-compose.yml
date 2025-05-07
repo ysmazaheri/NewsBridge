@@ -22,6 +22,19 @@ services:
     depends_on:
       - group-articles-service
 
+  api-gateway:
+    build:
+      context: ./backend/api-gateway
+    ports:
+      - "4000:4000"
+    depends_on:
+      - auth-service 
+  auth-service:
+    build: 
+      context: ./backend
+    ports:
+      - "5001:5001"
+
 
   frontend:
     build: 

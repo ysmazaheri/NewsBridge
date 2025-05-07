@@ -16,7 +16,7 @@ const SignInPage: React.FC = () => {
     setFormData({ ...formData, password: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email && !formData.password) {
       toast.error("Please fill out all fields.");
@@ -30,9 +30,28 @@ const SignInPage: React.FC = () => {
       toast.error("Password is required.");
       return;
     }
+
+    try {
+      const response = await fetch("http://localhost:4000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: formData.email, password: formData.password }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      toast.success("Login successful!");
+      navigate("/");
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+      toast.error("Login failed. Please check your credentials.");
+    }
+  };
     // Handle form submission
     console.log("Submitted data:", formData);
-  };
+
 
   const handleFooterLinkClick = () => {
     navigate("/sign-up");
