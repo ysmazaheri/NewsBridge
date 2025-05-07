@@ -1,0 +1,26 @@
+{
+  "name": "llm-aggregation-service",
+  "version": "1.0.0",
+  "description": "The llm aggregation service",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch src/aggregate-articles.ts --exec tsx src/aggregate-articles.ts",
+    "build": "tsc",
+    "start": "node dist/aggregate-articles.js"
+  },
+  "dependencies": {
+    "@google/genai": "^0.12.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "mime": "^4.0.7",
+    "pino": "^8.17.0",
+    "pino-pretty": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.17.43",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}
