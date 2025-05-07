@@ -21,7 +21,14 @@ services:
       - "8002:8002"
     depends_on:
       - group-articles-service
-
+      
+  llm-aggregation-service:
+    build:
+      context: ./backend/llm-aggregation-service
+    ports:
+      - "8003:8003"
+    depends_on:
+      - enrich-article-service
 
   frontend:
     build: 
