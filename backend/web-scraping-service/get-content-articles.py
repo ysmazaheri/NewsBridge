@@ -1,12 +1,9 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, HttpUrl
 from newspaper import Article
-import re
-import requests
-import os
+import re, requests, os
 
 app = FastAPI()
-TOP_ARTICLES_URL = os.getenv("TOP_ARTICLES_URL", "http://localhost:8000")
+TOP_GROUPED_ARTICLES_URL = os.getenv("TOP_GROUPED_ARTICLES_URL", "http://group-articles-service:8001/grouped-articles")
 
 # clean text (remove by lines, image captions, collapse blank lines)
 def clean_text(text):
@@ -54,10 +51,12 @@ def fetch_content(grouped):
 # enrich top articles
 def enrich_top_articles():
     try:
-        resp = requests.get(f"{TOP_ARTICLES_URL}/top-articles", timeout=10)
+        resp = requests.get(TOP_GROUPED_ARTICLES_URL, timeout=10)
         resp.raise_for_status()
-        grouped = resp.json()
+        payload = resp.json()
+        groups = payload.get("grouped_articles", [])
+        grouped = {f"group_{i}": metas for i, metas in enumerate(groups)}
     except Exception as e:
-        raise HTTPException(status_code=502, detail=f"Failed to fetch from Top-Articles: {e}")
+        raise HTTPException(status_code=502, detail=f"Failed to fetch from Grouped-Articles: {e}")
 
     return fetch_content(grouped)
